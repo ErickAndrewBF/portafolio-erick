@@ -47,4 +47,4 @@ npm run dev
 **Erick Bustamante**
 
 - [LinkedIn](https://www.linkedin.com/in/erick-andrew-bustamante-flores-6a1a4623a/)
-- [GitHub](https://github.com/TU_USUARIO)
+- [GitHub](https://github.com/ErickAndrewBF)

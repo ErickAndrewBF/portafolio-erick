@@ -165,6 +165,17 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         z-index: 2;
       }
 
+      .project-date {
+        font-size: 0.8rem;
+        color: #64748b; /* Un gris sutil para no robar atención */
+        margin-top: -0.3rem; /* Lo acerca un poquito al título */
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
       .btn-github {
         display: flex;
         align-items: center;
@@ -255,7 +266,8 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         <div class="project-card">
           <Image src={imgCajaCusco} alt="Caja Cusco App" width={600} />
           <h4>Caja Municipal Cusco</h4>
-          <div>
+          <p class="project-date">🗓️ Nov 2024 - Feb 2026</p>
+          <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Kotlin</span>
             <span class="tag">Spring Boot</span>
             <span class="tag">SQL Server</span>
@@ -277,7 +289,8 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         <div class="project-card">
           <Image src={imgMlOrange} alt="ML Orange App" width={600} />
           <h4>ML Orange (XMachina)</h4>
-          <div>
+          <p class="project-date">🗓️ Ago 2024 - Nov 2024</p>
+          <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">React Native</span>
             <span class="tag">React</span>
             <span class="tag">Express</span>
@@ -301,7 +314,8 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         <div class="project-card">
           <Image src={imgSmartCities} alt="Smart Cities" width={600} />
           <h4>Smart Cities Perú</h4>
-          <div>
+          <p class="project-date">🗓️ Nov 2022 - Ago 2023</p>
+          <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Angular</span>
             <span class="tag">JavaScript</span>
             <span class="tag">Figma</span>
@@ -331,6 +345,7 @@ import imgPerfil from "../assets/foto_perfil.jpg";
           </a>
 
           <h4>Web de Clasificación con IA</h4>
+          <p class="project-date">🗓️ 2024</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">React</span>
             <span class="tag">Flask</span>
@@ -345,11 +360,14 @@ import imgPerfil from "../assets/foto_perfil.jpg";
             <a
               href="/caso-moscas"
               style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
-              class="btn-study"
             >
               Ver caso de Estudio &rarr;
             </a>
-            <a href="TU_LINK_DE_GITHUB_AQUI" target="_blank" class="btn-github">
+            <a
+              href="https://github.com/ErickAndrewBF/moscas-frontend.git"
+              target="_blank"
+              class="btn-github"
+            >
               <svg
                 viewBox="0 0 16 16"
                 aria-hidden="true"
@@ -370,7 +388,8 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         <div class="project-card">
           <Image src={imgDron} alt="App Dron Kotlin" width={600} />
           <h4>Control de Dron Nativo</h4>
-          <div>
+          <p class="project-date">🗓️ 2025 - 2026</p>
+          <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Kotlin</span>
             <span class="tag">DJI SDK</span>
           </div>
@@ -391,13 +410,13 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         <div class="project-card">
           <Image src={imgQuechua} alt="App Quechua" width={600} />
           <h4>Recolección de Audio en Quechua</h4>
-          <div>
+          <p class="project-date">🗓️ 2026</p>
+          <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Java</span>
             <span class="tag">Android</span>
             <span class="tag">FastAPI</span>
             <span class="tag">PostgreSQL</span>
             <span class="tag">MinIO (S3)</span>
-            <span class="tag">Audio API</span>
           </div>
           <p>
             App móvil desarrollada para una tesis externa orientada a la
