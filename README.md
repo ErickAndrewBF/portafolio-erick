@@ -1,63 +1,32 @@
-# Astro Starter Kit: Blog
+# 🚀 Portafolio Personal - Erick Bustamante
 
-```sh
-npm create astro@latest -- --template blog
-```
+> Desarrollador Full Stack & Frontend especializado en interfaces escalables, aplicaciones nativas y visión computacional.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🔗 **[Visita mi portafolio en vivo aquí](TU_ENLACE_DE_VERCEL_AQUI)**
 
-Features:
+## 📋 Sobre el Proyecto
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+Este es el código fuente de mi portafolio personal, diseñado con un enfoque estricto en el rendimiento, la accesibilidad web y la experiencia de usuario (UX). Incluye casos de estudio detallados sobre arquitecturas de software que he desarrollado para el sector académico y privado.
 
-## 🚀 Project Structure
+## 🛠️ Stack Tecnológico
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Framework:** [Astro](https://astro.build/) (Elegido por su arquitectura de Zero-JS por defecto y tiempos de carga instantáneos).
+- **Estilos:** CSS Puro (Responsive Design y Flexbox/Grid).
+- **Despliegue:** Vercel.
 
-```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+## 💻 Proyectos Destacados (Casos de Estudio)
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Dentro de este portafolio documento mi experiencia técnica resolviendo problemas complejos:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **Control de Dron Nativo:** Desarrollo Android en **Kotlin** con integración de DJI SDK e IA en tiempo real.
+- **App Quechua:** Arquitectura Full Stack con **React Native, FastAPI, PostgreSQL y MinIO**.
+- **Clasificador con IA:** Prototipo web de visión computacional con **React y Flask**.
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## 🚀 Cómo ejecutarlo localmente
 
-Any static assets, like images, can be placed in the `public/` directory.
+Si deseas clonar este proyecto y probarlo en tu máquina local, sigue estos pasos:
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+1. Clona el repositorio:
+   ```bash
+   git clone [https://github.com/TU_USUARIO/TU_REPO.git](https://github.com/TU_USUARIO/TU_REPO.git)
+   ```
