@@ -28,5 +28,5 @@ Si deseas clonar este proyecto y probarlo en tu máquina local, sigue estos paso
 
 1. Clona el repositorio:
    ```bash
-   git clone [https://github.com/TU_USUARIO/TU_REPO.git](https://github.com/TU_USUARIO/TU_REPO.git)
+   git clone [https://github.com/ErickAndrewBF/portafolio-erick.git](https://github.com/ErickAndrewBF/portafolio-erick.git)
    ```
