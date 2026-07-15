@@ -1,0 +1,235 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead
+      title={`Caso de Estudio: App Dron | ${SITE_TITLE}`}
+      description="Caso de estudio: Desarrollo nativo en Kotlin y Visión Computacional."
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .case-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #4a5568;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      .back-link:hover {
+        color: #000;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+      }
+      p,
+      li {
+        line-height: 1.7;
+        color: #4a5568;
+        margin-bottom: 1rem;
+      }
+
+      .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .tag {
+        background: #f1f5f9;
+        color: #334155;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .info-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid #3b82f6;
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+      }
+
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        margin: 2rem 0;
+        background: #0f172a;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .case-container {
+          padding: 1.5rem 1rem;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        h2 {
+          font-size: 1.3rem;
+        }
+        h3 {
+          font-size: 1.1rem;
+        }
+        .info-box {
+          padding: 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="case-container">
+      <a href="/" class="back-link">&larr; Volver al Portafolio</a>
+
+      <h1>Control de Dron Nativo e IA en Tiempo Real</h1>
+
+      <div class="tag-container">
+        <span class="tag">Kotlin</span>
+        <span class="tag">Android Nativo</span>
+        <span class="tag">DJI Mobile SDK</span>
+        <span class="tag">Visión Computacional</span>
+      </div>
+
+      <div class="info-box">
+        <p>
+          <strong>Nota de Confidencialidad:</strong> Este sistema fue desarrollado
+          a medida para un proyecto de investigación. Por acuerdos de propiedad intelectual,
+          el código fuente y el algoritmo matemático de <em>tracking</em> se mantienen
+          privados. A continuación, detallo la arquitectura, la integración del hardware
+          y la interfaz de usuario.
+        </p>
+      </div>
+
+      <h2>El Reto Técnico</h2>
+      <p>
+        El objetivo fue construir una aplicación móvil Android nativa capaz de
+        establecer comunicación directa con el hardware de un dron (utilizando
+        el DJI Mobile SDK) y procesar su flujo de video en tiempo real. La meta:
+        detectar y rastrear llamas y alpacas en el campo, permitiendo a los
+        investigadores generar reportes geolocalizados.
+      </p>
+
+      <h2>Demostración del Flujo de Trabajo</h2>
+
+      <div class="video-wrapper">
+        <video controls muted>
+          <source src="/demo-dron.mp4" type="video/mp4" />
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+
+      <p>
+        En el video superior se demuestra la robustez del sistema operando en su
+        modo de carga local (procesando un video pregrabado para simular la
+        vista del dron):
+      </p>
+
+      <ol>
+        <li>
+          <strong>Gestión de Rendimiento:</strong> Iniciamos en el panel de configuraciones
+          seleccionando el modelo de inferencia "Ligero". Esto permite priorizar los
+          FPS (Frames per Second) para mantener una interfaz fluida en dispositivos
+          móviles estándar.
+        </li>
+        <li>
+          <strong>Tracking Integrado:</strong> Al cargar el video, se observa el procesamiento
+          en tiempo real. Se integró exitosamente el algoritmo de tracking del cliente
+          dentro del ciclo de vida de la app, manteniendo el seguimiento de los objetivos
+          sin congelar el hilo principal (Main Thread).
+        </li>
+        <li>
+          <strong>Persistencia de Datos:</strong> Generación y guardado de reportes
+          de detección en tiempo real.
+        </li>
+        <li>
+          <strong>Trade-off de IA:</strong> Se demuestra el cambio en caliente al
+          modelo "Pesado". Aunque los FPS disminuyen por la carga computacional, la
+          aplicación sigue siendo estable, permitiendo al usuario decidir qué factor
+          priorizar.
+        </li>
+        <li>
+          <strong>Historial:</strong> Todos los reportes generados se persisten correctamente
+          en la base de datos local del dispositivo.
+        </li>
+        <li>
+          <strong>Hardware-Ready:</strong> Finalmente, se expone la interfaz principal
+          a la espera de la conexión del hardware físico a través del SDK de DJI.
+        </li>
+      </ol>
+
+      <h2>Desafíos Resueltos</h2>
+
+      <h3>1. Integración del DJI Mobile SDK</h3>
+      <p>
+        Conectar hardware externo a un dispositivo móvil requiere un manejo
+        estricto de hilos (Threads). El principal desafío fue interceptar el
+        flujo de video en bruto que envía el dron y convertirlo a un formato que
+        el modelo de Inteligencia Artificial pudiera consumir, todo esto sin
+        generar bloqueos en la interfaz de usuario ni pérdidas de memoria
+        (Memory Leaks).
+      </p>
+
+      <h3>2. Arquitectura del Algoritmo de Tracking</h3>
+      <p>
+        Si bien el modelo de inferencia (los pesos de la IA) fue provisto por el
+        investigador, mi responsabilidad fue orquestar su ejecución. Implementé
+        una arquitectura modular que separa la capa de renderizado de UI de la
+        capa de procesamiento matemático. Esto asegura que la aplicación pueda
+        escalar si en el futuro el cliente decide inyectar modelos más
+        complejos.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>

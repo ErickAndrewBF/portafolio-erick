@@ -1,0 +1,244 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE } from "../consts";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead
+      title={`Caso de Estudio: App Quechua | ${SITE_TITLE}`}
+      description="Plataforma de recolección de audios médicos con React Native, FastAPI y MinIO."
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .case-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 2rem;
+        color: #4a5568;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      .back-link:hover {
+        color: #000;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+      }
+      p,
+      li {
+        line-height: 1.7;
+        color: #4a5568;
+        margin-bottom: 1rem;
+      }
+
+      .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .tag {
+        background: #f1f5f9;
+        color: #334155;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .info-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid #10b981;
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+      }
+
+      .mobile-video-container {
+        display: flex;
+        justify-content: center;
+        margin: 3rem 0;
+        padding: 0 1rem;
+      }
+      .mobile-video-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        border: 8px solid #0f172a;
+        background: #000;
+      }
+      .mobile-video-wrapper video {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      @media (max-width: 768px) {
+        .case-container {
+          padding: 1.5rem 1rem;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        h2 {
+          font-size: 1.3rem;
+        }
+        h3 {
+          font-size: 1.1rem;
+        }
+        .info-box {
+          padding: 1rem;
+          font-size: 0.9rem;
+        }
+        .mobile-video-wrapper {
+          border-width: 6px;
+          border-radius: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="case-container">
+      <a href="/" class="back-link">&larr; Volver al Portafolio</a>
+
+      <h1>Plataforma de Audios Médicos en Lenguas Indígenas</h1>
+
+      <div class="tag-container">
+        <span class="tag">Java</span>
+        <span class="tag">Android</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">MinIO (S3)</span>
+        <span class="tag">Audio API</span>
+      </div>
+
+      <div class="info-box">
+        <p>
+          <strong>Contexto del Proyecto:</strong> Esta aplicación es el núcleo tecnológico
+          de una tesis orientada a la recolección y estructuración de datos de voz
+          en Quechua. Me integré al proyecto en una etapa intermedia (con código heredado)
+          con la misión de arquitectar la base de datos, implementar el flujo de validación
+          y construir la infraestructura de almacenamiento de archivos.
+        </p>
+      </div>
+
+      <h2>El Reto Técnico</h2>
+      <p>
+        Se requería un sistema seguro donde entrevistadores de campo pudieran
+        grabar a pacientes respondiendo preguntas médicas en Quechua. Estos
+        audios debían ser almacenados de forma estructurada y pasar por un
+        riguroso proceso de validación por parte de expertos lingüistas
+        (aprobación/rechazo) para garantizar la calidad del dataset final.
+      </p>
+
+      <h2>Flujo de la Aplicación</h2>
+
+      <div class="mobile-video-container">
+        <div class="mobile-video-wrapper">
+          <video controls muted>
+            <source src="/demo-quechua.mp4" type="video/mp4" />
+            Tu navegador no soporta la reproducción de video.
+          </video>
+        </div>
+      </div>
+
+      <p>
+        El video muestra el recorrido completo del usuario, destacando la lógica
+        de negocio implementada:
+      </p>
+
+      <ul>
+        <li>
+          <strong>Autenticación y Roles:</strong> Inicio de sesión que enruta al usuario
+          dependiendo de su rol en el sistema (Entrevistador vs. Validador).
+        </li>
+        <li>
+          <strong>Recolección (Entrevistadores):</strong> Interfaz que muestra los
+          "prompts" o textos médicos. Permite grabar el audio, reproducirlo localmente
+          para confirmar la calidad y enviarlo al servidor mediante peticiones asíncronas.
+        </li>
+        <li>
+          <strong>Panel de Validación (Expertos):</strong> Vista dedicada donde los
+          validadores escuchan los audios recién subidos. Aquí entra en juego la máquina
+          de estados de la base de datos, permitiendo "Aprobar" o "Rechazar" el material.
+        </li>
+        <li>
+          <strong>Gestión de Estados:</strong> Navegación por pestañas (Tabs) que
+          consultan dinámicamente al backend para separar los audios aprobados de
+          los rechazados.
+        </li>
+      </ul>
+
+      <h2>Arquitectura y Soluciones Implementadas</h2>
+
+      <h3>1. Almacenamiento de Objetos con MinIO</h3>
+      <p>
+        Para evitar saturar la base de datos relacional con archivos pesados
+        (BLOBs), integré <strong>MinIO</strong> (compatible con la API de Amazon S3).
+        Desarrollé los endpoints en FastAPI para gestionar la subida segura de los
+        audios y la generación de URLs prefirmadas para su reproducción en la app
+        móvil.
+      </p>
+
+      <h3>2. Modelado Relacional (PostgreSQL)</h3>
+      <p>
+        Diseñé desde cero el esquema de base de datos para soportar la
+        trazabilidad completa del proyecto: tablas de usuarios con roles
+        estrictos, catálogos de textos médicos, y una tabla de audios que maneja
+        el estado actual de cada grabación (Pendiente, Aprobado, Rechazado)
+        junto con el identificador de quién lo grabó y quién lo validó.
+      </p>
+
+      <h3>3. Adaptabilidad a Código Heredado</h3>
+      <p>
+        Tomar un proyecto en desarrollo exige leer y comprender rápidamente las
+        convenciones del código existente. Refactoricé las conexiones de red en
+        Kotlin y estructuré los <em>routers</em> en FastAPI para que el sistema pudiera
+        escalar de manera limpia sin romper la interfaz gráfica que el cliente ya
+        tenía aprobada.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,251 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE } from "../consts";
+import { Image } from "astro:assets";
+// Si tienes una imagen destacada para el caso de estudio, la importas aquí:
+// import imgMoscas from "../assets/tus-moscas.png";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <BaseHead
+      title={`Caso de Estudio: Clasificación de Moscas | ${SITE_TITLE}`}
+      description="Caso de estudio: Clasificación de especies de mosca de la fruta utilizando visión computacional e IA."
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .case-container {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem;
+      }
+
+      .navigation-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .back-link {
+        display: inline-block;
+        color: #4a5568;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.2s ease;
+      }
+      .back-link:hover {
+        color: #000;
+      }
+      .github-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #0f172a;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s ease;
+      }
+      .github-btn:hover {
+        background: #1e293b;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 0.5rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+      }
+      p,
+      li {
+        line-height: 1.7;
+        color: #4a5568;
+        margin-bottom: 1rem;
+      }
+
+      .tag-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+      .tag {
+        background: #f1f5f9;
+        color: #334155;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .info-box {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-left: 4px solid #3b82f6;
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+      }
+
+      .video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+        margin: 2rem 0;
+        background: #0f172a;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      .video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (max-width: 768px) {
+        .case-container {
+          padding: 1.5rem 1rem;
+        }
+        h1 {
+          font-size: 1.8rem;
+        }
+        h2 {
+          font-size: 1.3rem;
+        }
+        h3 {
+          font-size: 1.1rem;
+        }
+        .info-box {
+          padding: 1rem;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main class="case-container">
+      <div class="navigation-header">
+        <a href="/" class="back-link">&larr; Volver al Portafolio</a>
+        <a href="TU_LINK_DE_GITHUB_AQUI" target="_blank" class="github-btn">
+          Ver en GitHub
+        </a>
+      </div>
+
+      <h1>
+        Clasificador de Especies de Mosca de la Fruta con Inteligencia
+        Artificial
+      </h1>
+
+      <div class="tag-container">
+        <span class="tag">React</span>
+        <span class="tag">Flask</span>
+        <span class="tag">Python</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Computer Vision</span>
+      </div>
+
+      <div class="info-box">
+        <p>
+          <strong>Proyecto de Tesis / Investigación:</strong> Este prototipo fue desarrollado
+          para automatizar la identificación de plagas agrícolas en el sector frutícola.
+          Utiliza redes neuronales convolucionales para agilizar el diagnóstico en
+          campo.
+        </p>
+      </div>
+
+      <h2>El Reto Técnico</h2>
+      <p>
+        La identificación manual de la mosca de la fruta (especialmente del
+        género <em>Anastrepha</em> o <em>Ceratitis capitata</em>) requiere
+        expertos entomólogos y microscopios de alta resolución. El desafío
+        consistió en entrenar un modelo de Deep Learning ligero que clasifique
+        estas especies mediante fotografías capturadas con smartphones
+        convencionales y servirlo a través de una aplicación Web Full Stack ágil
+        y amigable.
+      </p>
+
+      <h2>Demostración del Funcionamiento (Video)</h2>
+
+      <div class="video-wrapper">
+        <video controls muted>
+          <source src="/demo-moscas.mp4" type="video/mp4" />
+          Tu navegador no soporta la reproducción de video.
+        </video>
+      </div>
+
+      <p>
+        En la demostración técnica superior se observan las fases clave del
+        sistema:
+      </p>
+
+      <ol>
+        <li>
+          <strong>Carga de Muestras:</strong> El usuario arrastra o captura directamente
+          la imagen del espécimen a través de la interfaz responsiva en React.
+        </li>
+        <li>
+          <strong>Preprocesamiento Dinámico:</strong> Ajuste automático de iluminación,
+          enfoque y recorte de los patrones alares en el servidor Python (Flask) con
+          OpenCV.
+        </li>
+        <li>
+          <strong>Inferencia e Interpretación:</strong> El motor basado en redes de
+          clasificación procesa la imagen y devuelve el porcentaje de confianza junto
+          con la especie identificada en menos de 100ms.
+        </li>
+      </ol>
+
+      <h2>Solución Arquitectónica</h2>
+
+      <h3>1. API Backend con Flask y PyTorch</h3>
+      <p>
+        Para mantener el servidor eficiente, construí un microservicio en Flask
+        que carga los pesos del modelo en memoria durante el inicio. Al
+        desacoplar la inferencia del servidor frontend, garantizamos que las
+        peticiones se resuelvan en milisegundos sin bloquear la interfaz visual.
+      </p>
+
+      <h3>2. Frontend React Optimizado</h3>
+      <p>
+        Diseñé una interfaz minimalista y responsiva que guía al agricultor o
+        investigador de forma secuencial. El sistema incluye retroalimentación
+        en tiempo real si la imagen cargada no tiene suficiente resolución o
+        iluminación para asegurar la precisión de la IA.
+      </p>
+    </main>
+    <Footer />
+  </body>
+</html>
