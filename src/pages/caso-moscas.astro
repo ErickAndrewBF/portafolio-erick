@@ -211,43 +211,73 @@ import { Image } from "astro:assets";
       </div>
 
       <p>
-        En la demostración técnica superior se observan las fases clave del
-        sistema:
+        En la demostración técnica del video se detalla el flujo de trabajo
+        completo de la plataforma, desde la selección de los datos hasta la
+        explicabilidad visual del modelo:
       </p>
 
       <ol>
         <li>
-          <strong>Carga de Muestras:</strong> El usuario arrastra o captura directamente
-          la imagen del espécimen a través de la interfaz responsiva en React.
+          <strong>Navegación y Contexto (Landing Page):</strong> Recorrido por la
+          interfaz mediante pestañas (tabs) que detallan el propósito de la herramienta,
+          las métricas de evaluación empleadas y las arquitecturas de los modelos
+          implementados.
         </li>
         <li>
-          <strong>Preprocesamiento Dinámico:</strong> Ajuste automático de iluminación,
-          enfoque y recorte de los patrones alares en el servidor Python (Flask) con
-          OpenCV.
+          <strong>Selección de Muestras y Modelos:</strong> El entorno de pruebas
+          permite utilizar imágenes precargadas en el servidor. El usuario puede seleccionar
+          dinámicamente entre 1 y 5 muestras provenientes de 3
+          <em>datasets</em> distintos y elegir los modelos de IA que participarán
+          en la predicción.
         </li>
         <li>
-          <strong>Inferencia e Interpretación:</strong> El motor basado en redes de
-          clasificación procesa la imagen y devuelve el porcentaje de confianza junto
-          con la especie identificada en menos de 100ms.
+          <strong>Pipeline de Preprocesamiento Visual:</strong> El sistema expone
+          el paso a paso de las transformaciones aplicadas a cada imagen hasta lograr
+          la segmentación exacta de la mosca. Incluye una galería interactiva con
+          controles de navegación (adelante/atrás) para inspeccionar el proceso en
+          detalle.
+        </li>
+        <li>
+          <strong>Clasificación Multimodelo:</strong> Despliegue de los resultados
+          donde se compara la predicción de los modelos seleccionados para cada imagen
+          procesada.
+        </li>
+        <li>
+          <strong>Explicabilidad con Grad-CAM:</strong> Fase crítica para la validación
+          científica. El usuario selecciona imágenes específicas para generar mapas
+          de calor (Grad-CAM), visualizando el área original, el mapa de activación
+          y la superposición de ambos. Esto permite entender exactamente <em
+            >qué partes del insecto</em
+          > está mirando la red neuronal para tomar su decisión.
+        </li>
+        <li>
+          <strong>Flujo Iterativo:</strong> Retorno fluido a la pantalla de selección
+          para evaluar nuevos lotes de imágenes sin recargar el aplicativo.
         </li>
       </ol>
 
       <h2>Solución Arquitectónica</h2>
 
-      <h3>1. API Backend con Flask y PyTorch</h3>
+      <h3>1. API Backend Analítico (Flask + PyTorch)</h3>
       <p>
-        Para mantener el servidor eficiente, construí un microservicio en Flask
-        que carga los pesos del modelo en memoria durante el inicio. Al
-        desacoplar la inferencia del servidor frontend, garantizamos que las
-        peticiones se resuelvan en milisegundos sin bloquear la interfaz visual.
+        Lejos de ser un simple <em>endpoint</em> de clasificación, el servidor orquesta
+        un pipeline completo de Visión Computacional. Flask gestiona la carga de múltiples
+        modelos en memoria y los diferentes <em>datasets</em> de evaluación. La API
+        expone rutas que no solo devuelven predicciones, sino que procesan y envían
+        al cliente las etapas intermedias de segmentación y calculan dinámicamente
+        los mapas de activación (Grad-CAM) utilizando PyTorch.
       </p>
 
-      <h3>2. Frontend React Optimizado</h3>
+      <h3>2. Panel Científico en el Frontend (React)</h3>
       <p>
-        Diseñé una interfaz minimalista y responsiva que guía al agricultor o
-        investigador de forma secuencial. El sistema incluye retroalimentación
-        en tiempo real si la imagen cargada no tiene suficiente resolución o
-        iluminación para asegurar la precisión de la IA.
+        Construí una interfaz (SPA) orientada a la auditoría de modelos,
+        abandonando el enfoque de una simple "app de cámara". El mayor reto
+        arquitectónico fue la gestión del estado global para coordinar la
+        selección cruzada de muestras y modelos. Desarrollé componentes a
+        medida, como el visor interactivo (slider) para inspeccionar el
+        preprocesamiento paso a paso, optimizando el DOM para renderizar
+        múltiples mapas de calor simultáneamente sin degradar el rendimiento
+        visual.
       </p>
     </main>
     <Footer />
