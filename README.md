@@ -2,7 +2,7 @@
 
 > Desarrollador Full Stack & Frontend especializado en interfaces escalables, aplicaciones nativas y visión computacional.
 
-🔗 **[Visita mi portafolio en vivo aquí](TU_ENLACE_DE_VERCEL_AQUI)**
+🔗 **[Visita mi portafolio en vivo aquí](https://portafolio-erick-nine.vercel.app/)**
 
 ## 📋 Sobre el Proyecto
 
