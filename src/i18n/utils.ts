@@ -167,7 +167,13 @@ export function applyLanguage(lang: Lang): void {
     btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   });
 
-  // 8. Dispatch global event for other components (e.g. CV download button)
+  // 8. Update dynamic CV download links
+  const cvLinks = document.querySelectorAll<HTMLAnchorElement>('a[data-cv-download]');
+  cvLinks.forEach((link) => {
+    link.href = `/cv/cv-${lang}.pdf`;
+  });
+
+  // 9. Dispatch global event for other components (e.g. CV download button)
   window.dispatchEvent(
     new CustomEvent<{ lang: Lang }>('languagechange', {
       detail: { lang },

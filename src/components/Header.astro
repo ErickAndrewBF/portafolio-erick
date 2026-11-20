@@ -1,46 +1,55 @@
 ---
-import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
 <header>
   <nav>
-    <h2><a href="/">{SITE_TITLE}</a></h2>
+    <!-- Brand / Logo -->
+    <a href="/" class="brand-link" aria-label="Erick Bustamante — Home">
+      <div class="brand-badge" aria-hidden="true">
+        <span>EB</span>
+      </div>
+      <div class="brand-info">
+        <span class="brand-title">Erick Bustamante</span>
+      </div>
+    </a>
 
+    <!-- Navigation Links -->
     <div class="internal-links">
       <HeaderLink href="/" data-i18n="nav.home">Home</HeaderLink>
       <HeaderLink href="/#experiencia" data-i18n="nav.experience">Experience</HeaderLink>
       <HeaderLink href="/#proyectos" data-i18n="nav.projects">Projects</HeaderLink>
+      <HeaderLink href="/about" data-i18n="nav.about">About</HeaderLink>
     </div>
 
+    <!-- Actions: Socials + Language Selector -->
     <div class="header-right">
       <div class="social-links">
         <a
           href="https://www.linkedin.com/in/erick-andrew-bustamante-flores-6a1a4623a/"
           target="_blank"
+          rel="noopener noreferrer"
           data-i18n-aria-label="nav.linkedin_aria"
           aria-label="Connect with Erick on LinkedIn"
+          class="icon-btn"
         >
           <span class="sr-only" data-i18n="nav.linkedin_aria">Connect with Erick on LinkedIn</span>
-          <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
-            <path
-              fill="currentColor"
-              d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"
-            ></path>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 0 0-1.6 1.6 1.6 1.6 0 0 0 1.6 1.6 1.6 1.6 0 0 0 1.6-1.6c0-.89-.72-1.6-1.6-1.6Z"/>
           </svg>
         </a>
+
         <a
-          href="https://github.com/ErickAndrewBF/portafolio-erick.git"
+          href="https://github.com/ErickAndrewBF"
           target="_blank"
+          rel="noopener noreferrer"
           data-i18n-aria-label="nav.github_aria"
           aria-label="View project source code on GitHub"
+          class="icon-btn"
         >
           <span class="sr-only" data-i18n="nav.github_aria">View project source code on GitHub</span>
-          <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24">
-            <path
-              fill="currentColor"
-              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-            ></path>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+            <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2Z"/>
           </svg>
         </a>
       </div>
@@ -59,7 +68,7 @@ import HeaderLink from "./HeaderLink.astro";
           aria-pressed="false"
           aria-label="English"
         >EN</button>
-        <span class="lang-divider" aria-hidden="true">|</span>
+        <span class="lang-divider" aria-hidden="true">/</span>
         <button
           type="button"
           class="lang-btn"
@@ -67,7 +76,7 @@ import HeaderLink from "./HeaderLink.astro";
           aria-pressed="false"
           aria-label="Português"
         >PT</button>
-        <span class="lang-divider" aria-hidden="true">|</span>
+        <span class="lang-divider" aria-hidden="true">/</span>
         <button
           type="button"
           class="lang-btn"
@@ -92,125 +101,188 @@ import HeaderLink from "./HeaderLink.astro";
 
 <style>
   header {
-    margin: 0;
-    padding: 0 1em;
-    background: white;
-    box-shadow: 0 2px 8px rgba(var(--black), 5%);
     position: sticky;
     top: 0;
-    z-index: 50;
-  }
-  h2 {
-    margin: 0;
-    font-size: 1em;
+    z-index: 100;
+    width: 100%;
+    height: var(--header-height);
+    background: var(--bg-glass);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border-subtle);
   }
 
-  h2 a,
-  h2 a.active {
-    text-decoration: none;
-    color: var(--black);
-  }
   nav {
+    max-width: var(--max-width);
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 4rem;
+    gap: 1.5rem;
   }
-  nav a {
-    padding: 0.5em;
-    color: var(--black);
-    text-decoration: none;
-  }
-  .header-right {
+
+  /* Brand */
+  .brand-link {
     display: flex;
     align-items: center;
-    gap: 1.2rem;
+    gap: 0.75rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: opacity var(--transition-fast);
   }
-  .social-links {
+  .brand-link:hover {
+    opacity: 0.9;
+  }
+
+  .brand-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: linear-gradient(135deg, #18181b 0%, #27272a 100%);
+    border: 1px solid var(--border-default);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  .brand-info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .brand-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    color: var(--text-primary);
+  }
+
+  /* Navigation Links */
+  .internal-links {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
-  .social-links a {
-    display: flex;
-    align-items: center;
-    color: #4a5568;
-    transition: color 0.2s ease;
-  }
-  .social-links a:hover {
-    color: #000;
+
+  .internal-links :global(a) {
+    color: var(--text-secondary);
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
   }
 
-  /* Language Selector Styles */
+  .internal-links :global(a:hover) {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .internal-links :global(a.active) {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.07);
+    font-weight: 600;
+  }
+
+  /* Header Actions */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    color: var(--text-secondary);
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+  }
+
+  .icon-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--border-subtle);
+  }
+
+  /* Language Selector (Linear/Vercel Pill Design) */
   .lang-selector {
     display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
-    background: #f1f5f9;
-    padding: 0.25rem 0.6rem;
-    border-radius: 9999px;
-    border: 1px solid #e2e8f0;
+    padding: 0.2rem 0.3rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    gap: 0.15rem;
   }
+
   .lang-btn {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 0.15rem 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 0.2rem 0.45rem;
     border-radius: 4px;
-    color: #64748b;
-    font-family: inherit;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    transition: all 0.15s ease;
+    transition: all var(--transition-fast);
     line-height: 1;
   }
+
   .lang-btn:hover {
-    color: #0f172a;
+    color: var(--text-primary);
   }
+
   .lang-btn.active {
-    color: var(--accent);
-    font-weight: 800;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
+
   .lang-divider {
-    color: #cbd5e1;
-    font-size: 0.75rem;
+    color: var(--border-default);
+    font-size: 0.65rem;
     user-select: none;
+    padding: 0 0.1rem;
   }
 
-  .internal-links {
-    display: flex;
-    align-items: center;
-  }
-  .internal-links a {
-    text-decoration: none;
-    color: #4a5568;
-    padding: 0.5rem 0;
-    margin: 0 1rem;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s ease;
-  }
-  .internal-links a:hover {
-    color: #000;
-    border-bottom-color: #000;
-  }
-
-  @media (max-width: 720px) {
+  @media (max-width: 768px) {
+    nav {
+      padding: 0 1rem;
+      gap: 0.75rem;
+    }
     .social-links {
       display: none;
     }
-    .internal-links a {
-      margin: 0 0.5rem;
-      font-size: 0.9rem;
+    .internal-links :global(a) {
+      padding: 0.35rem 0.5rem;
+      font-size: 0.82rem;
     }
-    .lang-selector {
-      padding: 0.2rem 0.45rem;
-      gap: 0.2rem;
-    }
-    .lang-btn {
-      font-size: 0.75rem;
-      padding: 0.1rem 0.2rem;
+  }
+
+  @media (max-width: 520px) {
+    .brand-title {
+      display: none;
     }
   }
 </style>

@@ -3,14 +3,10 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-
-// IMPORTACIÓN DE IMÁGENES
 import { Image } from "astro:assets";
+
 import imgMoscas from "../assets/moscas-app.jpg";
 import imgDron from "../assets/dron-app.png";
-import imgMlOrange from "../assets/mlorange.png";
-import imgCajaCusco from "../assets/cajacusco.png";
-import imgSmartCities from "../assets/smartcities.png";
 import imgQuechua from "../assets/quechua.webp";
 import imgPerfil from "../assets/foto_perfil.jpg";
 ---
@@ -18,364 +14,1227 @@ import imgPerfil from "../assets/foto_perfil.jpg";
 <!doctype html>
 <html lang="en">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      h1 {
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        letter-spacing: -0.02em;
-      }
-      h2 {
-        font-size: 1.5rem;
-        margin-top: 3.5rem;
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid #eaeaea;
-      }
-      p {
-        font-size: 1rem;
-        line-height: 1.7;
-        color: #4a5568;
-        margin-bottom: 1.2rem;
-      }
-
-      .project-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .project-card {
-        border: 1px solid #e2e8f0;
-        border-radius: 10px;
-        padding: 1.2rem;
-        background: #fff;
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-        position: relative;
-      }
-      .project-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
-      }
-      .project-card img {
-        border-radius: 8px;
-        margin-bottom: 1rem;
-        width: 100%;
-        height: 180px;
-        object-fit: contain;
-        object-position: center;
-        background-color: #f8fafc;
-        display: block;
-      }
-
-      .card-link::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-      }
-
-      .project-card h4 {
-        font-size: 1.1rem;
-        margin-top: 0;
-        margin-bottom: 0.5rem;
-        color: #1a202c;
-      }
-      .project-card p {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin-bottom: 1rem;
-      }
-
-      .tag {
-        display: inline-block;
-        background: #f1f5f9;
-        color: #334155;
-        padding: 0.2rem 0.7rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        margin-right: 0.3rem;
-        margin-bottom: 0.5rem;
-        font-weight: 600;
-      }
-
-      .profile-container {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        margin-bottom: 2rem;
-      }
-      .profile-text {
-        flex: 1;
-      }
-      .profile-text h1 {
-        margin-top: 0;
-      }
-
-      .profile-image-wrapper {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .profile-pic {
-        width: 210px !important;
-        height: 210px !important;
-        border-radius: 50% !important;
-        object-fit: cover !important;
-        border: 4px solid #f1f5f9;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-        display: block;
-      }
-      .profile-pic:hover {
-        transform: scale(1.05);
-      }
-
-      .card-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1.5rem;
-        position: relative;
-        z-index: 2;
-      }
-
-      .project-date {
-        font-size: 0.8rem;
-        color: #64748b;
-        margin-top: -0.3rem;
-        margin-bottom: 0.8rem;
-        font-weight: 500;
-        display: flex;
-        align-items: center;
-        gap: 0.3rem;
-      }
-
-      .btn-github {
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-        color: #475569;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.2s ease;
-      }
-      .btn-github:hover {
-        color: #000;
-      }
-
-      @media (max-width: 768px) {
-        .profile-container {
-          flex-direction: column-reverse;
-          gap: 1.5rem;
-          text-align: center;
-        }
-        .profile-pic {
-          width: 160px !important;
-          height: 160px !important;
-        }
-      }
-    </style>
+    <BaseHead
+      title={SITE_TITLE}
+      description={SITE_DESCRIPTION}
+      titleKey="site.role"
+    />
   </head>
   <body>
     <Header />
-    <main>
-      <!-- PERFIL HERO -->
-      <div class="profile-container">
-        <div class="profile-text">
-          <h1 id="inicio" data-i18n="hero.title">Hi, I'm Erick Bustamante</h1>
-          <p data-i18n-html="hero.p1">
-            <strong>Full Stack & Frontend Software Engineer</strong>. Currently pursuing a <strong>Master’s Degree in Informatics (PPGI) at Universidade de Brasília (UnB)</strong>, researching in the Signal Processing Group (GPDS). Passionate about building high-performance applications with modern stacks and integrating complex models into real-world solutions.
-          </p>
-          <p data-i18n-html="hero.p2">
-            Focused on clean code, performance optimization, and applying Artificial Intelligence (Computer Vision and NLP) to solve tangible challenges. Proven track record in <strong>HealthTech</strong>, building custom ERPs and clinical interfaces with hardware connectivity, multimedia processing, and real-time data streaming.
-          </p>
-        </div>
-        <div class="profile-image-wrapper">
-          <Image src={imgPerfil} alt="Erick Bustamante" class="profile-pic" />
-        </div>
-      </div>
 
-      <!-- SECCIÓN 1: EXPERIENCIA -->
-      <h2 id="experiencia" data-i18n="exp.section_title">💼 Work Experience</h2>
-      <div class="project-grid">
-        <!-- TARJETA 1: CAJA CUSCO -->
-        <div class="project-card">
-          <Image src={imgCajaCusco} alt="Caja Cusco App" width={600} />
-          <h4 data-i18n="exp.cajacusco_title">Caja Municipal Cusco</h4>
-          <p class="project-date" data-i18n="exp.cajacusco_date">🗓️ Nov 2024 - Feb 2026</p>
-          <div class="tag-container" style="margin-bottom: 0.5rem;">
-            <span class="tag">Kotlin</span>
-            <span class="tag">Spring Boot</span>
-            <span class="tag">SQL Server</span>
-          </div>
-          <p data-i18n="exp.cajacusco_desc">
-            Development of the Wayki App mobile application. Implementation of new digital banking features and resource optimization.
-          </p>
-          <a
-            href="https://play.google.com/store/apps/details?id=com.pe.cajacusco.movil&hl=es"
-            target="_blank"
-            class="card-link"
-            style="font-size: 0.9rem; font-weight: bold; color: #2563eb;"
-            data-i18n="exp.cajacusco_link"
-            >View App on Play Store &rarr;</a
-          >
-        </div>
+    <main class="landing-main">
+      <!-- ====================================================================
+           1. HERO SECTION
+           ==================================================================== -->
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-badge-wrap">
+              <span class="status-indicator">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-i18n="hero.badge">Available for Senior Roles & AI Research</span>
+              </span>
+            </div>
 
-        <!-- TARJETA 2: ML ORANGE -->
-        <div class="project-card">
-          <Image src={imgMlOrange} alt="ML Orange App" width={600} />
-          <h4 data-i18n="exp.mlorange_title">ML Orange (XMachina)</h4>
-          <p class="project-date" data-i18n="exp.mlorange_date">🗓️ Aug 2024 - Nov 2024</p>
-          <div class="tag-container" style="margin-bottom: 0.5rem;">
-            <span class="tag">React Native</span>
-            <span class="tag">React</span>
-            <span class="tag">Express</span>
-          </div>
-          <p data-i18n="exp.mlorange_desc">
-            Full Stack development of a mobile app for acoustic analysis and occupational health disease prediction, along with desktop modules in Electron for internal administration.
-          </p>
-          <a
-            href="https://www.linkedin.com/company/ex-machina-si/posts/?feedView=all"
-            target="_blank"
-            class="card-link"
-            style="font-size: 0.9rem; font-weight: bold; color: #2563eb;"
-            data-i18n="exp.mlorange_link"
-            >View LinkedIn Profile &rarr;</a
-          >
-        </div>
+            <h1 class="hero-headline">
+              <span class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</span>
+              <span class="hero-name" data-i18n="hero.name">Erick Bustamante</span>
+            </h1>
 
-        <!-- TARJETA 3: SMART CITIES -->
-        <div class="project-card">
-          <Image src={imgSmartCities} alt="Smart Cities" width={600} />
-          <h4 data-i18n="exp.smartcities_title">Smart Cities Perú</h4>
-          <p class="project-date" data-i18n="exp.smartcities_date">🗓️ Nov 2022 - Aug 2023</p>
-          <div class="tag-container" style="margin-bottom: 0.5rem;">
-            <span class="tag">Angular</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">Figma</span>
-          </div>
-          <p data-i18n="exp.smartcities_desc">
-            Complete refactoring of Extranet and Intranet portals for Consettur. Designed and engineered user interfaces for Macsalud Clinic’s medical ERP system.
-          </p>
-          <a
-            href="https://www.linkedin.com/company/smart-cities-peru-sac/posts/?feedView=all"
-            target="_blank"
-            class="card-link"
-            style="font-size: 0.9rem; font-weight: bold; color: #2563eb;"
-            data-i18n="exp.smartcities_link"
-            >View LinkedIn Profile &rarr;</a
-          >
-        </div>
-      </div>
+            <p class="hero-role-title" data-i18n="hero.role">
+              Full-Stack & AI Engineer
+            </p>
 
-      <!-- SECCIÓN 2: PROYECTOS INDEPENDIENTES Y ACADÉMICOS -->
-      <h2 id="proyectos" data-i18n="proj.section_title">🛠️ Independent Projects</h2>
-      <div class="project-grid">
-        <!-- WEB CLASIFICACIÓN MOSCAS-->
-        <div class="project-card">
-          <a href="/caso-moscas" class="card-link">
-            <Image src={imgMoscas} alt="Clasificador Moscas" width={600} />
-          </a>
+            <p class="hero-tagline" data-i18n="hero.tagline">
+              Bridging scalable production systems with applied AI research.
+            </p>
 
-          <h4 data-i18n="proj.moscas_title">AI-Powered Fruit Fly Classifier</h4>
-          <p class="project-date" data-i18n="proj.moscas_date">🗓️ 2024</p>
-          <div class="tag-container" style="margin-bottom: 0.5rem;">
-            <span class="tag">React</span>
-            <span class="tag">Flask</span>
-            <span class="tag" data-i18n="dron.tag_vision">Computer Vision</span>
-          </div>
-          <p data-i18n="proj.moscas_desc">
-            Full Stack web application for uploading imagery and classifying fruit fly agricultural pests. Research thesis prototype.
-          </p>
+            <p class="hero-bio" data-i18n="hero.bio">
+              Master’s researcher at Universidade de Brasília (UnB / GPDS) and Senior Software Engineer. Experienced in building high-concurrency digital banking apps, custom HealthTech platforms, and state-of-the-art vector search algorithms.
+            </p>
 
-          <div class="card-actions">
-            <a
-              href="/caso-moscas"
-              style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
-              data-i18n="action.view_case_study"
-            >
-              Read Case Study &rarr;
-            </a>
-            <a
-              href="https://github.com/ErickAndrewBF/moscas-frontend.git"
-              target="_blank"
-              class="btn-github"
-            >
-              <svg
-                viewBox="0 0 16 16"
-                aria-hidden="true"
-                width="18"
-                height="18"
+            <div class="hero-actions">
+              <a
+                id="hero-cv-btn"
+                href="/cv/cv-en.pdf"
+                target="_blank"
+                download
+                data-cv-download
+                class="btn-primary"
+                data-i18n-aria-label="action.download_cv"
               >
-                <path
-                  fill="currentColor"
-                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-                ></path>
-              </svg>
-              GitHub
-            </a>
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span data-i18n="action.download_cv">Download CV</span>
+              </a>
+
+              <a href="#proyectos" class="btn-secondary">
+                <span data-i18n="action.view_projects">View Projects</span>
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M7 17l10-10M17 17V7H7"/>
+                </svg>
+              </a>
+
+              <a href="mailto:171943@unsaac.edu.pe" class="btn-ghost">
+                <span data-i18n="action.contact">Get in Touch</span>
+              </a>
+            </div>
           </div>
+
+          <div class="hero-visual">
+            <div class="avatar-frame">
+              <Image
+                src={imgPerfil}
+                alt="Erick Bustamante"
+                class="avatar-img"
+                width={240}
+                height={240}
+                loading="eager"
+              />
+              <div class="avatar-ring" aria-hidden="true"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           2. CREDIBILITY / METRICS BAR
+           ==================================================================== -->
+      <section class="metrics-section" aria-label="Highlights and Key Metrics">
+        <div class="metrics-grid">
+          <!-- Metric 1: Vector Search Speedup -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-value font-mono text-accent" data-i18n="metrics.m1_val">924x</span>
+              <span class="metric-tag font-mono">Speedup</span>
+            </div>
+            <h4 class="metric-label" data-i18n="metrics.m1_label">Vector Search Speedup</h4>
+            <p class="metric-desc" data-i18n="metrics.m1_desc">HNSW + NCD Low-Resource Thesis</p>
+          </div>
+
+          <!-- Metric 2: Research Publication -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-value font-mono text-emerald" data-i18n="metrics.m2_val">Springer</span>
+              <span class="metric-tag font-mono">Paper</span>
+            </div>
+            <h4 class="metric-label" data-i18n="metrics.m2_label">Research Author</h4>
+            <p class="metric-desc" data-i18n="metrics.m2_desc">Signal Processing & Applied ML</p>
+          </div>
+
+          <!-- Metric 3: NASA Space Apps -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-value font-mono text-accent" data-i18n="metrics.m3_val">NASA</span>
+              <span class="metric-tag font-mono">Nominee</span>
+            </div>
+            <h4 class="metric-label" data-i18n="metrics.m3_label">Global Nominee</h4>
+            <p class="metric-desc" data-i18n="metrics.m3_desc">Space Apps Challenge 2023</p>
+          </div>
+
+          <!-- Metric 4: Production Experience -->
+          <div class="metric-card">
+            <div class="metric-top">
+              <span class="metric-value font-mono text-emerald" data-i18n="metrics.m4_val">3+ Yrs</span>
+              <span class="metric-tag font-mono">Production</span>
+            </div>
+            <h4 class="metric-label" data-i18n="metrics.m4_label">Production Software</h4>
+            <p class="metric-desc" data-i18n="metrics.m4_desc">FinTech, HealthTech & Mobile</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. PROJECTS & CASE STUDIES (BENTO GRID)
+           ==================================================================== -->
+      <section id="proyectos" class="section-block">
+        <div class="section-header">
+          <div class="section-badge font-mono" data-i18n="proj.section_badge">Featured Engineering</div>
+          <h2 class="section-title" data-i18n="proj.section_title">🛠️ Projects & Case Studies</h2>
+          <p class="section-sub" data-i18n="proj.section_desc">
+            A selection of production-grade systems, hardware integrations, and applied AI research projects.
+          </p>
         </div>
 
-        <!-- APP DRON-->
-        <div class="project-card">
-          <Image src={imgDron} alt="App Dron Kotlin" width={600} />
-          <h4 data-i18n="proj.dron_title">Native Drone Control & Tracking</h4>
-          <p class="project-date" data-i18n="proj.dron_date">🗓️ 2025 - 2026</p>
-          <div class="tag-container" style="margin-bottom: 0.5rem;">
-            <span class="tag">Kotlin</span>
-            <span class="tag">DJI SDK</span>
+        <div class="bento-grid">
+          <!-- BENTO ITEM 1: MASTER'S THESIS / AI RESEARCH (FEATURED SPAN-2) -->
+          <div class="bento-card bento-featured">
+            <div class="bento-content">
+              <div class="card-badge-row">
+                <span class="tech-tag highlight font-mono" data-i18n="proj.hnsw_badge">
+                  Master's Thesis • AI Research
+                </span>
+                <span class="metric-badge font-mono" data-i18n="proj.hnsw_metric">
+                  O(log N) Search • Up to 924x Speedup
+                </span>
+              </div>
+
+              <h3 class="bento-title" data-i18n="proj.hnsw_title">
+                Hybrid Vector Filtering for Low-Resource Text Classification
+              </h3>
+
+              <p class="bento-desc" data-i18n="proj.hnsw_desc">
+                Novel architecture combining HNSW graph indexing with Normalized Compression Distance (NCD). Reduces search complexity from O(N) to O(log N) + O(K) with up to 924x speedup on benchmark datasets.
+              </p>
+
+              <div class="bento-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">HNSWLib</span>
+                <span class="tech-tag">Information Theory (NCD)</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">NumPy</span>
+              </div>
+
+              <div class="bento-footer">
+                <span class="bento-note font-mono">Universidade de Brasília • GPDS / PPGI</span>
+              </div>
+            </div>
           </div>
-          <p data-i18n="proj.dron_desc">
-            Android application for direct drone control and real-time video processing to detect and track livestock using Computer Vision.
+
+          <!-- BENTO ITEM 2: MOSCAS CLASSIFIER -->
+          <div class="bento-card">
+            <div class="bento-img-wrap">
+              <Image src={imgMoscas} alt="Fruit Fly Pest Classifier" class="bento-thumbnail" width={600} />
+            </div>
+            <div class="bento-content">
+              <div class="card-badge-row">
+                <span class="tech-tag font-mono" data-i18n="proj.moscas_badge">
+                  Computer Vision • Deep Learning
+                </span>
+              </div>
+
+              <h3 class="bento-title" data-i18n="proj.moscas_title">
+                AI-Powered Fruit Fly Classifier & Grad-CAM
+              </h3>
+
+              <p class="bento-desc" data-i18n="proj.moscas_desc">
+                Full Stack web platform for agricultural pest diagnostics with PyTorch convolutional networks and real-time Grad-CAM explainability heatmaps.
+              </p>
+
+              <div class="bento-tags">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Grad-CAM</span>
+              </div>
+
+              <div class="bento-footer">
+                <a href="/caso-moscas" class="card-action-link" data-i18n="action.view_case_study">
+                  Read Case Study &rarr;
+                </a>
+                <a
+                  href="https://github.com/ErickAndrewBF/moscas-frontend.git"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="card-github-link"
+                >
+                  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BENTO ITEM 3: NATIVE DRONE APP -->
+          <div class="bento-card">
+            <div class="bento-img-wrap">
+              <Image src={imgDron} alt="Native Drone Telemetry" class="bento-thumbnail" width={600} />
+            </div>
+            <div class="bento-content">
+              <div class="card-badge-row">
+                <span class="tech-tag font-mono" data-i18n="proj.dron_badge">
+                  Native Android • Robotics SDK
+                </span>
+              </div>
+
+              <h3 class="bento-title" data-i18n="proj.dron_title">
+                Native Drone Telemetry & Livestock Tracking
+              </h3>
+
+              <p class="bento-desc" data-i18n="proj.dron_desc">
+                High-performance Android application interfacing with DJI Mobile SDK to process raw video feeds and track livestock in real time.
+              </p>
+
+              <div class="bento-tags">
+                <span class="tech-tag">Kotlin</span>
+                <span class="tech-tag">Android SDK</span>
+                <span class="tech-tag">DJI SDK</span>
+                <span class="tech-tag">Computer Vision</span>
+              </div>
+
+              <div class="bento-footer">
+                <a href="/caso-dron" class="card-action-link" data-i18n="action.view_case_study">
+                  Read Case Study &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- BENTO ITEM 4: QUECHUA MEDICAL SPEECH -->
+          <div class="bento-card">
+            <div class="bento-img-wrap">
+              <Image src={imgQuechua} alt="Quechua Speech Corpus" class="bento-thumbnail" width={600} />
+            </div>
+            <div class="bento-content">
+              <div class="card-badge-row">
+                <span class="tech-tag font-mono" data-i18n="proj.quechua_badge">
+                  Distributed Backend • Audio S3
+                </span>
+              </div>
+
+              <h3 class="bento-title" data-i18n="proj.quechua_title">
+                Quechua Speech Corpus & Validation Pipeline
+              </h3>
+
+              <p class="bento-desc" data-i18n="proj.quechua_desc">
+                Voice collection system for indigenous medical speech, integrating FastAPI routers, PostgreSQL state machines, and MinIO S3 presigned URLs.
+              </p>
+
+              <div class="bento-tags">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">PostgreSQL</span>
+                <span class="tech-tag">MinIO (S3)</span>
+                <span class="tech-tag">Java / Kotlin</span>
+              </div>
+
+              <div class="bento-footer">
+                <a href="/caso-quechua" class="card-action-link" data-i18n="action.view_case_study">
+                  Read Case Study &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           4. WORK EXPERIENCE TIMELINE
+           ==================================================================== -->
+      <section id="experiencia" class="section-block">
+        <div class="section-header">
+          <div class="section-badge font-mono" data-i18n="exp.section_badge">Career Timeline</div>
+          <h2 class="section-title" data-i18n="exp.section_title">💼 Work Experience</h2>
+          <p class="section-sub" data-i18n="exp.section_desc">
+            Proven track record architecting mission-critical digital banking, acoustic biometric diagnostics, and enterprise medical systems.
           </p>
-          <a
-            href="/caso-dron"
-            class="card-link"
-            style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
-            data-i18n="action.view_case_study"
-            >Read Case Study &rarr;</a
-          >
         </div>
 
-        <!-- APP QUECHUA-->
-        <div class="project-card">
-          <Image src={imgQuechua} alt="App Quechua" width={600} />
-          <h4 data-i18n="proj.quechua_title">Quechua Medical Audio Platform</h4>
-          <p class="project-date" data-i18n="proj.quechua_date">🗓️ 2026</p>
-          <div class="tag-container" style="margin-bottom: 0.5rem;">
-            <span class="tag">Java</span>
-            <span class="tag">Android</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">PostgreSQL</span>
-            <span class="tag">MinIO (S3)</span>
+        <div class="timeline-container">
+          <!-- Item 1: Caja Cusco -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-meta">
+                <span class="timeline-role" data-i18n="exp.cajacusco_role">Mobile & Backend Engineer</span>
+                <span class="timeline-period font-mono" data-i18n="exp.cajacusco_date">Nov 2024 — Feb 2026</span>
+              </div>
+              <h3 class="timeline-company" data-i18n="exp.cajacusco_title">Caja Municipal Cusco</h3>
+              <p class="timeline-summary" data-i18n="exp.cajacusco_summary">
+                Engineered core features and microservices for the Wayki App mobile banking ecosystem. Optimized critical SQL queries, strengthened security, and enhanced performance for hundreds of thousands of active financial users.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">Kotlin</span>
+                <span class="tech-tag">Spring Boot</span>
+                <span class="tech-tag">SQL Server</span>
+                <span class="tech-tag">Android SDK</span>
+                <span class="tech-tag">Microservices</span>
+              </div>
+              <div class="timeline-link">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.pe.cajacusco.movil&hl=es"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-link"
+                  data-i18n="exp.cajacusco_link"
+                >
+                  View App on Play Store &rarr;
+                </a>
+              </div>
+            </div>
           </div>
-          <p data-i18n="proj.quechua_desc">
-            Mobile system developed for an external thesis collecting and validating voice recordings in indigenous languages to build machine learning datasets.
-          </p>
-          <a
-            href="/caso-quechua"
-            class="card-link"
-            style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
-            data-i18n="action.view_case_study"
-            >Read Case Study &rarr;</a
-          >
+
+          <!-- Item 2: ML Orange -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-meta">
+                <span class="timeline-role" data-i18n="exp.mlorange_role">Full-Stack Software Engineer</span>
+                <span class="timeline-period font-mono" data-i18n="exp.mlorange_date">Aug 2024 — Nov 2024</span>
+              </div>
+              <h3 class="timeline-company" data-i18n="exp.mlorange_title">ML Orange (XMachina)</h3>
+              <p class="timeline-summary" data-i18n="exp.mlorange_summary">
+                Architected a cross-platform mobile solution for acoustic analysis and occupational health screening. Built accompanying Electron desktop administration software and Express backend with MariaDB.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Electron</span>
+                <span class="tech-tag">Express</span>
+                <span class="tech-tag">MariaDB</span>
+                <span class="tech-tag">Audio Processing</span>
+              </div>
+              <div class="timeline-link">
+                <a
+                  href="https://www.linkedin.com/company/ex-machina-si/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-link"
+                  data-i18n="exp.mlorange_link"
+                >
+                  View LinkedIn Profile &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3: Smart Cities Perú -->
+          <div class="timeline-item">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-body">
+              <div class="timeline-meta">
+                <span class="timeline-role" data-i18n="exp.smartcities_role">Frontend & Systems Engineer</span>
+                <span class="timeline-period font-mono" data-i18n="exp.smartcities_date">Nov 2022 — Aug 2023</span>
+              </div>
+              <h3 class="timeline-company" data-i18n="exp.smartcities_title">Smart Cities Perú</h3>
+              <p class="timeline-summary" data-i18n="exp.smartcities_summary">
+                Executed complete architectural refactoring of corporate Extranet and Intranet systems for Consettur. Designed and engineered responsive interfaces for Macsalud Clinic’s hospital ERP.
+              </p>
+              <div class="timeline-tags">
+                <span class="tech-tag">Angular</span>
+                <span class="tech-tag">JavaScript / TypeScript</span>
+                <span class="tech-tag">SQL Server</span>
+                <span class="tech-tag">Figma</span>
+              </div>
+              <div class="timeline-link">
+                <a
+                  href="https://www.linkedin.com/company/smart-cities-peru-sac/posts/?feedView=all"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-link"
+                  data-i18n="exp.smartcities_link"
+                >
+                  View LinkedIn Profile &rarr;
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- ====================================================================
+           5. TECH STACK BY DOMAIN (4 COLUMNS)
+           ==================================================================== -->
+      <section class="section-block">
+        <div class="section-header">
+          <div class="section-badge font-mono" data-i18n="stack.section_badge">Technical Capabilities</div>
+          <h2 class="section-title" data-i18n="stack.section_title">⚡ Tech Stack by Domain</h2>
+          <p class="section-sub" data-i18n="stack.section_desc">
+            Battle-tested technologies and tools utilized across production software engineering and academic scientific research.
+          </p>
+        </div>
+
+        <div class="stack-domain-grid">
+          <!-- Domain 1: AI / ML & Research -->
+          <div class="stack-col">
+            <div class="stack-col-header">
+              <div class="stack-icon-badge" aria-hidden="true">🧠</div>
+              <div>
+                <h3 class="stack-col-title" data-i18n="stack.col1_title">AI / ML & Research</h3>
+                <span class="stack-col-desc" data-i18n="stack.col1_desc">Deep Learning, Vector Search & NLP</span>
+              </div>
+            </div>
+            <ul class="stack-items font-mono">
+              <li><span>PyTorch</span><span class="stack-type">Framework</span></li>
+              <li><span>Python</span><span class="stack-type">Core</span></li>
+              <li><span>HNSWLib</span><span class="stack-type">Vector DB</span></li>
+              <li><span>NCD / Info Theory</span><span class="stack-type">Algorithm</span></li>
+              <li><span>OpenCV</span><span class="stack-type">Vision</span></li>
+              <li><span>Scikit-Learn</span><span class="stack-type">Stats</span></li>
+              <li><span>Grad-CAM</span><span class="stack-type">Explainability</span></li>
+            </ul>
+          </div>
+
+          <!-- Domain 2: Backend & Systems -->
+          <div class="stack-col">
+            <div class="stack-col-header">
+              <div class="stack-icon-badge" aria-hidden="true">⚙️</div>
+              <div>
+                <h3 class="stack-col-title" data-i18n="stack.col2_title">Backend & Systems</h3>
+                <span class="stack-col-desc" data-i18n="stack.col2_desc">Distributed APIs, DBs & Cloud Storage</span>
+              </div>
+            </div>
+            <ul class="stack-items font-mono">
+              <li><span>Java / Spring Boot</span><span class="stack-type">Enterprise</span></li>
+              <li><span>FastAPI</span><span class="stack-type">Async API</span></li>
+              <li><span>PostgreSQL</span><span class="stack-type">RDBMS</span></li>
+              <li><span>SQL Server</span><span class="stack-type">Banking</span></li>
+              <li><span>MinIO (S3)</span><span class="stack-type">Object Store</span></li>
+              <li><span>Express.js / Node</span><span class="stack-type">Microservices</span></li>
+              <li><span>Redis</span><span class="stack-type">Caching</span></li>
+            </ul>
+          </div>
+
+          <!-- Domain 3: Frontend & Mobile -->
+          <div class="stack-col">
+            <div class="stack-col-header">
+              <div class="stack-icon-badge" aria-hidden="true">📱</div>
+              <div>
+                <h3 class="stack-col-title" data-i18n="stack.col3_title">Frontend & Mobile</h3>
+                <span class="stack-col-desc" data-i18n="stack.col3_desc">Modern Web SPAs & Native Mobile Apps</span>
+              </div>
+            </div>
+            <ul class="stack-items font-mono">
+              <li><span>TypeScript</span><span class="stack-type">Core</span></li>
+              <li><span>Kotlin (Android)</span><span class="stack-type">Native Mobile</span></li>
+              <li><span>React / Next.js</span><span class="stack-type">Web SPA</span></li>
+              <li><span>React Native</span><span class="stack-type">Cross Mobile</span></li>
+              <li><span>Angular</span><span class="stack-type">Enterprise</span></li>
+              <li><span>Astro</span><span class="stack-type">SSG / Islands</span></li>
+              <li><span>Electron</span><span class="stack-type">Desktop</span></li>
+            </ul>
+          </div>
+
+          <!-- Domain 4: Infra & Engineering -->
+          <div class="stack-col">
+            <div class="stack-col-header">
+              <div class="stack-icon-badge" aria-hidden="true">🛠️</div>
+              <div>
+                <h3 class="stack-col-title" data-i18n="stack.col4_title">Infra & Engineering</h3>
+                <span class="stack-col-desc" data-i18n="stack.col4_desc">DevOps, Tooling, Hardware SDKs & Design</span>
+              </div>
+            </div>
+            <ul class="stack-items font-mono">
+              <li><span>Docker</span><span class="stack-type">Containers</span></li>
+              <li><span>Git / GitHub Actions</span><span class="stack-type">CI / CD</span></li>
+              <li><span>Linux / Bash</span><span class="stack-type">Environment</span></li>
+              <li><span>DJI Mobile SDK</span><span class="stack-type">Hardware</span></li>
+              <li><span>Figma</span><span class="stack-type">UI / UX</span></li>
+              <li><span>Postman</span><span class="stack-type">API Testing</span></li>
+              <li><span>Markdown / LaTeX</span><span class="stack-type">Research</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
     </main>
+
     <Footer />
   </body>
 </html>
+
+<style>
+  /* Landing Main Layout */
+  .landing-main {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+    padding-top: 3.5rem;
+  }
+
+  /* Section Header Shared */
+  .section-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .section-badge {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin: 0;
+    letter-spacing: -0.025em;
+  }
+
+  .section-sub {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 680px;
+  }
+
+  /* ==========================================================================
+     1. HERO STYLING
+     ========================================================================== */
+  .hero-section {
+    padding-bottom: 1rem;
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    align-items: center;
+    gap: 3.5rem;
+  }
+
+  .hero-badge-wrap {
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-headline {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.1;
+  }
+
+  .hero-greeting {
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 600;
+    color: var(--text-tertiary);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-name {
+    font-size: clamp(2.3rem, 5vw, 3.4rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    letter-spacing: -0.04em;
+  }
+
+  .hero-role-title {
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-weight: 700;
+    color: var(--accent);
+    margin: 0 0 1rem 0;
+    letter-spacing: -0.015em;
+  }
+
+  .hero-tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+  }
+
+  .hero-bio {
+    font-size: 0.98rem;
+    color: var(--text-secondary);
+    line-height: 1.68;
+    max-width: 640px;
+    margin: 0 0 2rem 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  /* Action Buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: var(--accent);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.75rem 1.3rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(59, 130, 246, 0.35);
+    transition: all var(--transition-fast);
+  }
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.45);
+    color: #ffffff;
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bg-surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border-default);
+    font-weight: 600;
+    font-size: 0.92rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  .btn-secondary:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+    color: var(--text-primary);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.92rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  .btn-ghost:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  /* Avatar Visual Frame */
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+  }
+
+  .avatar-frame {
+    position: relative;
+    width: 220px;
+    height: 220px;
+  }
+
+  .avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    border: 3px solid var(--border-default);
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.7);
+    transition: transform var(--transition-smooth);
+  }
+  .avatar-frame:hover .avatar-img {
+    transform: scale(1.03);
+    border-color: var(--border-hover);
+  }
+
+  .avatar-ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px dashed rgba(59, 130, 246, 0.3);
+    pointer-events: none;
+    animation: rotate-ring 30s linear infinite;
+  }
+  @keyframes rotate-ring {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* ==========================================================================
+     2. METRICS / HIGHLIGHTS SECTION
+     ========================================================================== */
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .metric-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    transition: all var(--transition-fast);
+  }
+  .metric-card:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-hover);
+    transform: translateY(-2px);
+  }
+
+  .metric-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 0.35rem;
+  }
+
+  .metric-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+  .text-emerald {
+    color: var(--emerald);
+  }
+
+  .metric-tag {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-tertiary);
+    border: 1px solid var(--border-subtle);
+  }
+
+  .metric-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+  }
+
+  .metric-desc {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* ==========================================================================
+     3. BENTO GRID FOR PROJECTS
+     ========================================================================== */
+  .bento-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .bento-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: all var(--transition-fast);
+    box-shadow: var(--shadow-card);
+  }
+  .bento-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Featured Bento (Full Span) */
+  .bento-featured {
+    grid-column: span 2;
+    background: radial-gradient(circle at 90% 10%, rgba(59, 130, 246, 0.08) 0%, transparent 60%), var(--bg-surface);
+    border-color: rgba(59, 130, 246, 0.25);
+  }
+  .bento-featured .bento-content {
+    padding: 2.25rem 2.25rem;
+  }
+  .bento-featured .bento-title {
+    font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  }
+
+  .bento-img-wrap {
+    width: 100%;
+    height: 190px;
+    background-color: #0c0c0e;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .bento-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--transition-smooth);
+  }
+  .bento-card:hover .bento-thumbnail {
+    transform: scale(1.03);
+  }
+
+  .bento-content {
+    padding: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    flex: 1;
+  }
+
+  .card-badge-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-tag.highlight {
+    background: var(--accent-muted);
+    border-color: var(--accent-border);
+    color: var(--accent-hover);
+    font-weight: 600;
+  }
+
+  .metric-badge {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    background: var(--emerald-muted);
+    border: 1px solid var(--emerald-border);
+    color: var(--emerald);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .bento-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.3;
+    letter-spacing: -0.015em;
+  }
+
+  .bento-desc {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
+
+  .bento-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .bento-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    margin-top: auto;
+  }
+
+  .card-action-link {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .card-action-link:hover {
+    color: var(--accent-hover);
+  }
+
+  .card-github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  .card-github-link:hover {
+    color: var(--text-primary);
+  }
+
+  .bento-note {
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+  }
+
+  /* ==========================================================================
+     4. TIMELINE STYLING
+     ========================================================================== */
+  .timeline-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  /* Timeline connecting vertical line */
+  .timeline-container::before {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 15px;
+    bottom: 25px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent) 0%, rgba(255, 255, 255, 0.08) 100%);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 2.75rem;
+  }
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: -2rem;
+    top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--bg-base);
+    border: 3px solid var(--accent);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+    transition: transform var(--transition-fast);
+  }
+  .timeline-item:hover .timeline-dot {
+    transform: scale(1.25);
+    background: var(--accent);
+  }
+
+  .timeline-body {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    transition: all var(--transition-fast);
+  }
+  .timeline-body:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-hover);
+  }
+
+  .timeline-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .timeline-role {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .timeline-period {
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    background: rgba(255, 255, 255, 0.04);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-subtle);
+  }
+
+  .timeline-company {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .timeline-summary {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .timeline-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.25rem;
+  }
+
+  .timeline-link {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-subtle);
+  }
+
+  .text-link {
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .text-link:hover {
+    color: var(--accent-hover);
+  }
+
+  /* ==========================================================================
+     5. TECH STACK BY DOMAIN (4 COLUMNS)
+     ========================================================================== */
+  .stack-domain-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .stack-col {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    transition: all var(--transition-fast);
+  }
+  .stack-col:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-hover);
+  }
+
+  .stack-col-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .stack-icon-badge {
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0.4rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-subtle);
+    flex-shrink: 0;
+  }
+
+  .stack-col-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.2rem 0;
+    letter-spacing: -0.01em;
+  }
+
+  .stack-col-desc {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    line-height: 1.35;
+    display: block;
+  }
+
+  .stack-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .stack-items li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.35rem 0.55rem;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid transparent;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+  }
+  .stack-items li:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: var(--border-subtle);
+    color: var(--text-primary);
+  }
+
+  .stack-type {
+    font-size: 0.68rem;
+    color: var(--text-muted);
+  }
+
+  /* ==========================================================================
+     RESPONSIVE ADAPTATIONS
+     ========================================================================== */
+  @media (max-width: 992px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .stack-domain-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .hero-container {
+      grid-template-columns: 1fr;
+      text-align: left;
+      gap: 2.5rem;
+    }
+    .hero-visual {
+      order: -1;
+      justify-content: flex-start;
+    }
+    .avatar-frame {
+      width: 140px;
+      height: 140px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .bento-grid {
+      grid-template-columns: 1fr;
+    }
+    .bento-featured {
+      grid-column: span 1;
+    }
+    .timeline-container {
+      padding-left: 1.5rem;
+    }
+    .timeline-marker {
+      left: -1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+    .stack-domain-grid {
+      grid-template-columns: 1fr;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .btn-primary, .btn-secondary, .btn-ghost {
+      justify-content: center;
+    }
+  }
+</style>

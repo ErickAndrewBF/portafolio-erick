@@ -1,224 +1,107 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import CaseStudyLayout from "../layouts/CaseStudyLayout.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title={`Case Study: Drone App | ${SITE_TITLE}`}
-      description="Case study: Native Android development in Kotlin and Computer Vision with DJI SDK."
-      titleKey="dron.meta_title"
-      descriptionKey="dron.meta_desc"
-    />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        overflow-x: hidden;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      .case-container {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
-      }
-      .back-link {
-        display: inline-block;
-        margin-bottom: 2rem;
-        color: #4a5568;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.2s ease;
-      }
-      .back-link:hover {
-        color: #000;
-      }
+<CaseStudyLayout
+  title={`Case Study: Drone App | ${SITE_TITLE}`}
+  description="Case study: Native Android development in Kotlin and Computer Vision with DJI SDK."
+  titleKey="dron.meta_title"
+  descriptionKey="dron.meta_desc"
+  caseTitle="Native Drone Control & Real-Time AI"
+  caseTitleKey="dron.title"
+  category="Native Android • Robotics SDK"
+  role="Mobile & AI Integration Engineer"
+  roleKey="dron.role"
+  year="2025 — 2026"
+  tags={[
+    "Kotlin",
+    { label: "Native Android", key: "dron.tag_native" },
+    "DJI Mobile SDK",
+    { label: "Computer Vision", key: "dron.tag_vision" },
+  ]}
+>
+  <!-- Notice Box -->
+  <div class="info-box">
+    <p>
+      <strong data-i18n="dron.notice_title">Confidentiality Notice:</strong>{" "}
+      <span data-i18n-html="dron.notice_body">
+        This system was custom built for a scientific research project. Due to intellectual property agreements, the source code and mathematical tracking algorithm remain confidential. Below, I outline the architecture, hardware integration, and user interface.
+      </span>
+    </p>
+  </div>
 
-      h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid #eaeaea;
-        padding-bottom: 0.5rem;
-      }
-      h3 {
-        font-size: 1.2rem;
-        margin-top: 2rem;
-        margin-bottom: 0.8rem;
-      }
-      p,
-      li {
-        line-height: 1.7;
-        color: #4a5568;
-        margin-bottom: 1rem;
-      }
+  <!-- Technical Challenge -->
+  <h2 data-i18n="dron.challenge_title">The Technical Challenge</h2>
+  <p data-i18n="dron.challenge_body">
+    The goal was to build a native Android mobile application capable of communicating directly with drone hardware (using the DJI Mobile SDK) and processing its live video stream in real time. Objective: detect and track llamas and alpacas in agricultural fields, allowing researchers to generate geolocated reports.
+  </p>
 
-      .tag-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-      }
-      .tag {
-        background: #f1f5f9;
-        color: #334155;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
+  <!-- Video Demo -->
+  <h2 data-i18n="dron.demo_title">Workflow Demonstration</h2>
 
-      .info-box {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-left: 4px solid #3b82f6;
-        padding: 1.5rem;
-        border-radius: 4px;
-        margin-bottom: 2rem;
-        font-size: 0.95rem;
-      }
+  <div class="video-wrapper">
+    <video controls muted preload="metadata">
+      <source src="/demo-dron.mp4" type="video/mp4" />
+      <span data-i18n="action.video_unsupported">Your browser does not support the video tag.</span>
+    </video>
+  </div>
 
-      .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        margin: 2rem 0;
-        background: #0f172a;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      }
-      .video-wrapper video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+  <p data-i18n="dron.demo_intro">
+    The video above demonstrates the robustness of the system operating in local playback mode (processing pre-recorded flight video to simulate the drone camera feed):
+  </p>
 
-      @media (max-width: 768px) {
-        .case-container {
-          padding: 1.5rem 1rem;
-        }
-        h1 {
-          font-size: 1.8rem;
-        }
-        h2 {
-          font-size: 1.3rem;
-        }
-        h3 {
-          font-size: 1.1rem;
-        }
-        .info-box {
-          padding: 1rem;
-          font-size: 0.9rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main class="case-container">
-      <a href="/" class="back-link" data-i18n="action.back_portfolio">&larr; Back to Portfolio</a>
+  <ol class="step-list">
+    <li>
+      <strong data-i18n="dron.step1_title">Performance Management:</strong>{" "}
+      <span data-i18n="dron.step1_body">
+        We start in the configuration dashboard selecting the "Lightweight" inference model to prioritize FPS and maintain a smooth UI on standard mobile devices.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="dron.step2_title">Integrated Tracking:</strong>{" "}
+      <span data-i18n="dron.step2_body">
+        Upon loading the video, real-time tracking is executed. The proprietary tracking algorithm was successfully embedded into the Android lifecycle without freezing the Main Thread.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="dron.step3_title">Data Persistence:</strong>{" "}
+      <span data-i18n="dron.step3_body">Instant generation and saving of target detection logs in real time.</span>
+    </li>
+    <li>
+      <strong data-i18n="dron.step4_title">AI Trade-off:</strong>{" "}
+      <span data-i18n="dron.step4_body">
+        Hot-swapping to the "Heavy" model is demonstrated. While frame rate adapts to computational load, the app remains fully responsive, giving users full control.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="dron.step5_title">Inspection History:</strong>{" "}
+      <span data-i18n="dron.step5_body">
+        All generated detection events persist accurately in the local device database.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="dron.step6_title">Hardware-Ready:</strong>{" "}
+      <span data-i18n="dron.step6_body">
+        Finally, the primary flight dashboard is displayed awaiting physical hardware telemetry via DJI Mobile SDK.
+      </span>
+    </li>
+  </ol>
 
-      <h1 data-i18n="dron.title">Native Drone Control & Real-Time AI</h1>
+  <!-- Resolved Challenges -->
+  <h2 data-i18n="dron.challenges_title">Resolved Challenges</h2>
 
-      <div class="tag-container">
-        <span class="tag">Kotlin</span>
-        <span class="tag" data-i18n="dron.tag_native">Native Android</span>
-        <span class="tag">DJI Mobile SDK</span>
-        <span class="tag" data-i18n="dron.tag_vision">Computer Vision</span>
-      </div>
+  <div class="arch-card">
+    <h3 data-i18n="dron.chal1_title">1. DJI Mobile SDK Integration</h3>
+    <p data-i18n="dron.chal1_body">
+      Connecting external drone hardware to a mobile operating system demands strict multithreading. The key challenge was intercepting raw video frames from the drone and converting them efficiently for AI ingestion without causing UI stuttering or memory leaks.
+    </p>
+  </div>
 
-      <div class="info-box">
-        <p>
-          <strong data-i18n="dron.notice_title">Confidentiality Notice:</strong>{" "}
-          <span data-i18n-html="dron.notice_body">
-            This system was custom built for a scientific research project. Due to intellectual property agreements, the source code and mathematical tracking algorithm remain confidential. Below, I outline the architecture, hardware integration, and user interface.
-          </span>
-        </p>
-      </div>
-
-      <h2 data-i18n="dron.challenge_title">The Technical Challenge</h2>
-      <p data-i18n="dron.challenge_body">
-        The goal was to build a native Android mobile application capable of communicating directly with drone hardware (using the DJI Mobile SDK) and processing its live video stream in real time. Objective: detect and track llamas and alpacas in agricultural fields, allowing researchers to generate geolocated reports.
-      </p>
-
-      <h2 data-i18n="dron.demo_title">Workflow Demonstration</h2>
-
-      <div class="video-wrapper">
-        <video controls muted>
-          <source src="/demo-dron.mp4" type="video/mp4" />
-          <span data-i18n="action.video_unsupported">Your browser does not support the video tag.</span>
-        </video>
-      </div>
-
-      <p data-i18n="dron.demo_intro">
-        The video above demonstrates the robustness of the system operating in local playback mode (processing pre-recorded flight video to simulate the drone camera feed):
-      </p>
-
-      <ol>
-        <li>
-          <strong data-i18n="dron.step1_title">Performance Management:</strong>{" "}
-          <span data-i18n="dron.step1_body">
-            We start in the configuration dashboard selecting the "Lightweight" inference model to prioritize FPS and maintain a smooth UI on standard mobile devices.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="dron.step2_title">Integrated Tracking:</strong>{" "}
-          <span data-i18n="dron.step2_body">
-            Upon loading the video, real-time tracking is executed. The proprietary tracking algorithm was successfully embedded into the Android lifecycle without freezing the Main Thread.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="dron.step3_title">Data Persistence:</strong>{" "}
-          <span data-i18n="dron.step3_body">Instant generation and saving of target detection logs in real time.</span>
-        </li>
-        <li>
-          <strong data-i18n="dron.step4_title">AI Trade-off:</strong>{" "}
-          <span data-i18n="dron.step4_body">
-            Hot-swapping to the "Heavy" model is demonstrated. While frame rate adapts to computational load, the app remains fully responsive, giving users full control.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="dron.step5_title">Inspection History:</strong>{" "}
-          <span data-i18n="dron.step5_body">
-            All generated detection events persist accurately in the local device database.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="dron.step6_title">Hardware-Ready:</strong>{" "}
-          <span data-i18n="dron.step6_body">
-            Finally, the primary flight dashboard is displayed awaiting physical hardware telemetry via DJI Mobile SDK.
-          </span>
-        </li>
-      </ol>
-
-      <h2 data-i18n="dron.challenges_title">Resolved Challenges</h2>
-
-      <h3 data-i18n="dron.chal1_title">1. DJI Mobile SDK Integration</h3>
-      <p data-i18n="dron.chal1_body">
-        Connecting external drone hardware to a mobile operating system demands strict multithreading. The key challenge was intercepting raw video frames from the drone and converting them efficiently for AI ingestion without causing UI stuttering or memory leaks.
-      </p>
-
-      <h3 data-i18n="dron.chal2_title">2. Tracking Algorithm Architecture</h3>
-      <p data-i18n="dron.chal2_body">
-        While model weights were provided by the scientific team, my responsibility was orchestrating execution. I designed a modular decoupled architecture separating UI rendering from mathematical processing, ensuring long-term scalability.
-      </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+  <div class="arch-card" style="margin-top: 1rem;">
+    <h3 data-i18n="dron.chal2_title">2. Tracking Algorithm Architecture</h3>
+    <p data-i18n="dron.chal2_body">
+      While model weights were provided by the scientific team, my responsibility was orchestrating execution. I designed a modular decoupled architecture separating UI rendering from mathematical processing, ensuring long-term scalability.
+    </p>
+  </div>
+</CaseStudyLayout>

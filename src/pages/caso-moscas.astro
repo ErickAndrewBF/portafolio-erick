@@ -1,263 +1,111 @@
 ---
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import CaseStudyLayout from "../layouts/CaseStudyLayout.astro";
 import { SITE_TITLE } from "../consts";
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <BaseHead
-      title={`Case Study: Fruit Fly Classifier | ${SITE_TITLE}`}
-      description="Case study: Fruit fly species classification using Computer Vision and Deep Learning."
-      titleKey="moscas.meta_title"
-      descriptionKey="moscas.meta_desc"
-    />
-    <style>
-      * {
-        box-sizing: border-box;
-      }
-      body {
-        overflow-x: hidden;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      .case-container {
-        width: 100%;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem;
-      }
+<CaseStudyLayout
+  title={`Case Study: Fruit Fly Classifier | ${SITE_TITLE}`}
+  description="Case study: Fruit fly species classification using Computer Vision and Deep Learning."
+  titleKey="moscas.meta_title"
+  descriptionKey="moscas.meta_desc"
+  caseTitle="Fruit Fly Species Classifier with Artificial Intelligence"
+  caseTitleKey="moscas.title"
+  category="Computer Vision • Deep Learning"
+  role="Research Author & Full-Stack Lead"
+  roleKey="moscas.role"
+  year="2024"
+  githubUrl="https://github.com/ErickAndrewBF/moscas-frontend.git"
+  tags={[
+    "React",
+    "Flask",
+    "Python",
+    "PyTorch",
+    { label: "Computer Vision", key: "dron.tag_vision" },
+  ]}
+>
+  <!-- Notice Box -->
+  <div class="info-box">
+    <p>
+      <strong data-i18n="moscas.notice_title">Thesis / Research Project:</strong>{" "}
+      <span data-i18n="moscas.notice_body">
+        This prototype was built to automate agricultural pest detection in the fruit industry. It leverages convolutional neural networks to accelerate in-field entomological diagnostics.
+      </span>
+    </p>
+  </div>
 
-      .navigation-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 2rem;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
-      .back-link {
-        display: inline-block;
-        color: #4a5568;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.2s ease;
-      }
-      .back-link:hover {
-        color: #000;
-      }
-      .github-btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: #0f172a;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        font-size: 0.9rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition: background 0.2s ease;
-      }
-      .github-btn:hover {
-        background: #1e293b;
-      }
+  <!-- Technical Challenge -->
+  <h2 data-i18n="moscas.challenge_title">The Technical Challenge</h2>
+  <p data-i18n-html="moscas.challenge_body">
+    Manual identification of fruit flies (notably <em>Anastrepha</em> species and <em>Ceratitis capitata</em>) requires specialized entomologists and high-power microscopes. The challenge consisted in training a lightweight Deep Learning model to classify specimens from standard smartphone photos and serving it through an intuitive Full Stack web application.
+  </p>
 
-      h1 {
-        font-size: 2.2rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-      }
-      h2 {
-        font-size: 1.5rem;
-        margin-top: 3rem;
-        margin-bottom: 1rem;
-        border-bottom: 1px solid #eaeaea;
-        padding-bottom: 0.5rem;
-      }
-      h3 {
-        font-size: 1.2rem;
-        margin-top: 2rem;
-        margin-bottom: 0.8rem;
-      }
-      p,
-      li {
-        line-height: 1.7;
-        color: #4a5568;
-        margin-bottom: 1rem;
-      }
+  <!-- Video Demo -->
+  <h2 data-i18n="moscas.demo_title">Live Demonstration (Video)</h2>
 
-      .tag-container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-      }
-      .tag {
-        background: #f1f5f9;
-        color: #334155;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
+  <div class="video-wrapper">
+    <video controls muted preload="metadata">
+      <source src="/demo-moscas.mp4" type="video/mp4" />
+      <span data-i18n="action.video_unsupported">Your browser does not support the video tag.</span>
+    </video>
+  </div>
 
-      .info-box {
-        background: #f8fafc;
-        border: 1px solid #e2e8f0;
-        border-left: 4px solid #3b82f6;
-        padding: 1.5rem;
-        border-radius: 4px;
-        margin-bottom: 2rem;
-        font-size: 0.95rem;
-      }
+  <p data-i18n="moscas.demo_intro">
+    The technical walkthrough demonstrates the end-to-end platform workflow, from sample selection to model explainability:
+  </p>
 
-      .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        margin: 2rem 0;
-        background: #0f172a;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      }
-      .video-wrapper video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+  <ol class="step-list">
+    <li>
+      <strong data-i18n="moscas.step1_title">Navigation & Context:</strong>{" "}
+      <span data-i18n="moscas.step1_body">
+        Structured tab navigation detailing project motivation, evaluation metrics, and neural network architectures.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="moscas.step2_title">Sample & Model Selection:</strong>{" "}
+      <span data-i18n="moscas.step2_body">
+        The testing sandbox allows selecting between 1 and 5 sample images across 3 benchmark datasets and choosing which models participate in inference.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="moscas.step3_title">Visual Preprocessing Pipeline:</strong>{" "}
+      <span data-i18n="moscas.step3_body">
+        Step-by-step display of morphological transformations up to precise pest segmentation, featuring an interactive slider gallery.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="moscas.step4_title">Multi-Model Inference:</strong>{" "}
+      <span data-i18n="moscas.step4_body">
+        Side-by-side performance comparison of model predictions for each processed specimen.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="moscas.step5_title">Grad-CAM Explainability:</strong>{" "}
+      <span data-i18n-html="moscas.step5_body">
+        A vital phase for scientific validation: users generate activation heatmaps to inspect exactly which morphological features the network relied on.
+      </span>
+    </li>
+    <li>
+      <strong data-i18n="moscas.step6_title">Iterative Workflow:</strong>{" "}
+      <span data-i18n="moscas.step6_body">
+        Seamless return to the selection sandbox to evaluate new batches without reloading the single-page application.
+      </span>
+    </li>
+  </ol>
 
-      @media (max-width: 768px) {
-        .case-container {
-          padding: 1.5rem 1rem;
-        }
-        h1 {
-          font-size: 1.8rem;
-        }
-        h2 {
-          font-size: 1.3rem;
-        }
-        h3 {
-          font-size: 1.1rem;
-        }
-        .info-box {
-          padding: 1rem;
-          font-size: 0.9rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <Header />
-    <main class="case-container">
-      <div class="navigation-header">
-        <a href="/" class="back-link" data-i18n="action.back_portfolio">&larr; Back to Portfolio</a>
-        <a
-          href="https://github.com/ErickAndrewBF/moscas-frontend.git"
-          target="_blank"
-          class="github-btn"
-          data-i18n="action.view_github"
-        >
-          View on GitHub
-        </a>
-      </div>
+  <!-- Architecture Solutions -->
+  <h2 data-i18n="moscas.solution_title">Architectural Solution</h2>
 
-      <h1 data-i18n="moscas.title">
-        Fruit Fly Species Classifier with Artificial Intelligence
-      </h1>
+  <div class="arch-card">
+    <h3 data-i18n="moscas.sol1_title">1. Analytical Backend API (Flask + PyTorch)</h3>
+    <p data-i18n-html="moscas.sol1_body">
+      Far from a simple prediction endpoint, the backend manages image preprocessing, multi-model memory allocation, intermediate segmentation outputs, and dynamic Grad-CAM computation.
+    </p>
+  </div>
 
-      <div class="tag-container">
-        <span class="tag">React</span>
-        <span class="tag">Flask</span>
-        <span class="tag">Python</span>
-        <span class="tag">PyTorch</span>
-        <span class="tag" data-i18n="dron.tag_vision">Computer Vision</span>
-      </div>
-
-      <div class="info-box">
-        <p>
-          <strong data-i18n="moscas.notice_title">Thesis / Research Project:</strong>{" "}
-          <span data-i18n="moscas.notice_body">
-            This prototype was built to automate agricultural pest detection in the fruit industry. It leverages convolutional neural networks to accelerate in-field entomological diagnostics.
-          </span>
-        </p>
-      </div>
-
-      <h2 data-i18n="moscas.challenge_title">The Technical Challenge</h2>
-      <p data-i18n-html="moscas.challenge_body">
-        Manual identification of fruit flies (notably <em>Anastrepha</em> species and <em>Ceratitis capitata</em>) requires specialized entomologists and high-power microscopes. The challenge consisted in training a lightweight Deep Learning model to classify specimens from standard smartphone photos and serving it through an intuitive Full Stack web application.
-      </p>
-
-      <h2 data-i18n="moscas.demo_title">Live Demonstration (Video)</h2>
-
-      <div class="video-wrapper">
-        <video controls muted>
-          <source src="/demo-moscas.mp4" type="video/mp4" />
-          <span data-i18n="action.video_unsupported">Your browser does not support the video tag.</span>
-        </video>
-      </div>
-
-      <p data-i18n="moscas.demo_intro">
-        The technical walkthrough demonstrates the end-to-end platform workflow, from sample selection to model explainability:
-      </p>
-
-      <ol>
-        <li>
-          <strong data-i18n="moscas.step1_title">Navigation & Context:</strong>{" "}
-          <span data-i18n="moscas.step1_body">
-            Structured tab navigation detailing project motivation, evaluation metrics, and neural network architectures.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="moscas.step2_title">Sample & Model Selection:</strong>{" "}
-          <span data-i18n="moscas.step2_body">
-            The testing sandbox allows selecting between 1 and 5 sample images across 3 benchmark datasets and choosing which models participate in inference.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="moscas.step3_title">Visual Preprocessing Pipeline:</strong>{" "}
-          <span data-i18n="moscas.step3_body">
-            Step-by-step display of morphological transformations up to precise pest segmentation, featuring an interactive slider gallery.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="moscas.step4_title">Multi-Model Inference:</strong>{" "}
-          <span data-i18n="moscas.step4_body">
-            Side-by-side performance comparison of model predictions for each processed specimen.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="moscas.step5_title">Grad-CAM Explainability:</strong>{" "}
-          <span data-i18n-html="moscas.step5_body">
-            A vital phase for scientific validation: users generate activation heatmaps to inspect exactly which morphological features the network relied on.
-          </span>
-        </li>
-        <li>
-          <strong data-i18n="moscas.step6_title">Iterative Workflow:</strong>{" "}
-          <span data-i18n="moscas.step6_body">
-            Seamless return to the selection sandbox to evaluate new batches without reloading the single-page application.
-          </span>
-        </li>
-      </ol>
-
-      <h2 data-i18n="moscas.solution_title">Architectural Solution</h2>
-
-      <h3 data-i18n="moscas.sol1_title">1. Analytical Backend API (Flask + PyTorch)</h3>
-      <p data-i18n-html="moscas.sol1_body">
-        Far from a simple prediction endpoint, the backend manages image preprocessing, multi-model memory allocation, intermediate segmentation outputs, and dynamic Grad-CAM computation.
-      </p>
-
-      <h3 data-i18n="moscas.sol2_title">2. Scientific Dashboard Frontend (React)</h3>
-      <p data-i18n="moscas.sol2_body">
-        Designed as an interactive model auditing studio. Handled complex global state coordination, custom step-by-step sliders, and optimized DOM rendering for concurrent heatmaps.
-      </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+  <div class="arch-card" style="margin-top: 1rem;">
+    <h3 data-i18n="moscas.sol2_title">2. Scientific Dashboard Frontend (React)</h3>
+    <p data-i18n="moscas.sol2_body">
+      Designed as an interactive model auditing studio. Handled complex global state coordination, custom step-by-step sliders, and optimized DOM rendering for concurrent heatmaps.
+    </p>
+  </div>
+</CaseStudyLayout>
