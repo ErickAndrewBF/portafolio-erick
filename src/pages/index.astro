@@ -27,7 +27,7 @@ import imgPerfil from "../assets/foto_perfil.jpg";
       <!-- ====================================================================
            1. HERO SECTION
            ==================================================================== -->
-      <section class="hero-section">
+      <section id="inicio" class="hero-section">
         <div class="hero-container">
           <div class="hero-content">
             <div class="hero-badge-wrap">
@@ -154,7 +154,7 @@ import imgPerfil from "../assets/foto_perfil.jpg";
       <section id="proyectos" class="section-block">
         <div class="section-header">
           <div class="section-badge font-mono" data-i18n="proj.section_badge">Featured Engineering</div>
-          <h2 class="section-title" data-i18n="proj.section_title">🛠️ Projects & Case Studies</h2>
+          <h2 class="section-title" data-i18n="proj.section_title">Projects & Case Studies</h2>
           <p class="section-sub" data-i18n="proj.section_desc">
             A selection of production-grade systems, hardware integrations, and applied AI research projects.
           </p>
@@ -320,7 +320,7 @@ import imgPerfil from "../assets/foto_perfil.jpg";
       <section id="experiencia" class="section-block">
         <div class="section-header">
           <div class="section-badge font-mono" data-i18n="exp.section_badge">Career Timeline</div>
-          <h2 class="section-title" data-i18n="exp.section_title">💼 Work Experience</h2>
+          <h2 class="section-title" data-i18n="exp.section_title">Work Experience</h2>
           <p class="section-sub" data-i18n="exp.section_desc">
             Proven track record architecting mission-critical digital banking, acoustic biometric diagnostics, and enterprise medical systems.
           </p>
@@ -440,7 +440,7 @@ import imgPerfil from "../assets/foto_perfil.jpg";
       <section class="section-block">
         <div class="section-header">
           <div class="section-badge font-mono" data-i18n="stack.section_badge">Technical Capabilities</div>
-          <h2 class="section-title" data-i18n="stack.section_title">⚡ Tech Stack by Domain</h2>
+          <h2 class="section-title" data-i18n="stack.section_title">Tech Stack by Domain</h2>
           <p class="section-sub" data-i18n="stack.section_desc">
             Battle-tested technologies and tools utilized across production software engineering and academic scientific research.
           </p>
@@ -450,7 +450,15 @@ import imgPerfil from "../assets/foto_perfil.jpg";
           <!-- Domain 1: AI / ML & Research -->
           <div class="stack-col">
             <div class="stack-col-header">
-              <div class="stack-icon-badge" aria-hidden="true">🧠</div>
+              <div class="stack-icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"/>
+                  <circle cx="6" cy="12" r="3"/>
+                  <circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+              </div>
               <div>
                 <h3 class="stack-col-title" data-i18n="stack.col1_title">AI / ML & Research</h3>
                 <span class="stack-col-desc" data-i18n="stack.col1_desc">Deep Learning, Vector Search & NLP</span>
@@ -470,7 +478,14 @@ import imgPerfil from "../assets/foto_perfil.jpg";
           <!-- Domain 2: Backend & Systems -->
           <div class="stack-col">
             <div class="stack-col-header">
-              <div class="stack-icon-badge" aria-hidden="true">⚙️</div>
+              <div class="stack-icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2" ry="2"/>
+                  <rect x="2" y="14" width="20" height="8" rx="2" ry="2"/>
+                  <line x1="6" y1="6" x2="6.01" y2="6"/>
+                  <line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+              </div>
               <div>
                 <h3 class="stack-col-title" data-i18n="stack.col2_title">Backend & Systems</h3>
                 <span class="stack-col-desc" data-i18n="stack.col2_desc">Distributed APIs, DBs & Cloud Storage</span>
@@ -490,7 +505,12 @@ import imgPerfil from "../assets/foto_perfil.jpg";
           <!-- Domain 3: Frontend & Mobile -->
           <div class="stack-col">
             <div class="stack-col-header">
-              <div class="stack-icon-badge" aria-hidden="true">📱</div>
+              <div class="stack-icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
+                  <line x1="12" y1="18" x2="12.01" y2="18"/>
+                </svg>
+              </div>
               <div>
                 <h3 class="stack-col-title" data-i18n="stack.col3_title">Frontend & Mobile</h3>
                 <span class="stack-col-desc" data-i18n="stack.col3_desc">Modern Web SPAs & Native Mobile Apps</span>
@@ -510,7 +530,12 @@ import imgPerfil from "../assets/foto_perfil.jpg";
           <!-- Domain 4: Infra & Engineering -->
           <div class="stack-col">
             <div class="stack-col-header">
-              <div class="stack-icon-badge" aria-hidden="true">🛠️</div>
+              <div class="stack-icon-badge" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"/>
+                  <line x1="12" y1="19" x2="20" y2="19"/>
+                </svg>
+              </div>
               <div>
                 <h3 class="stack-col-title" data-i18n="stack.col4_title">Infra & Engineering</h3>
                 <span class="stack-col-desc" data-i18n="stack.col4_desc">DevOps, Tooling, Hardware SDKs & Design</span>
@@ -1208,6 +1233,47 @@ import imgPerfil from "../assets/foto_perfil.jpg";
   }
 
   @media (max-width: 768px) {
+    .landing-main {
+      gap: 3.5rem;
+      padding-top: 2rem;
+    }
+    .hero-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 1.75rem;
+    }
+    .hero-visual {
+      order: -1;
+      justify-content: center;
+    }
+    .avatar-frame {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto;
+    }
+    .hero-badge-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    .hero-headline {
+      align-items: center;
+    }
+    .hero-bio {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-actions {
+      flex-direction: column;
+      align-items: stretch;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
+      gap: 0.75rem;
+    }
+    .btn-primary, .btn-secondary, .btn-ghost {
+      width: 100%;
+      justify-content: center;
+    }
     .bento-grid {
       grid-template-columns: 1fr;
     }
@@ -1220,21 +1286,11 @@ import imgPerfil from "../assets/foto_perfil.jpg";
     .timeline-marker {
       left: -1.5rem;
     }
-  }
-
-  @media (max-width: 600px) {
     .metrics-grid {
       grid-template-columns: 1fr;
     }
     .stack-domain-grid {
       grid-template-columns: 1fr;
-    }
-    .hero-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .btn-primary, .btn-secondary, .btn-ghost {
-      justify-content: center;
     }
   }
 </style>
