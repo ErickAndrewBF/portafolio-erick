@@ -32,6 +32,25 @@ const { title, description, image = FallbackImage } = Astro.props;
 />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Sync HTML lang attribute before paint -->
+<script is:inline>
+  (() => {
+    try {
+      const saved = localStorage.getItem('preferred_lang');
+      const nav = (navigator.language || '').toLowerCase();
+      let lang = 'en';
+      if (saved === 'en' || saved === 'pt' || saved === 'es') {
+        lang = saved;
+      } else if (nav.startsWith('pt')) {
+        lang = 'pt';
+      } else if (nav.startsWith('es')) {
+        lang = 'es';
+      }
+      document.documentElement.lang = lang;
+    } catch (e) {}
+  })();
+</script>
+
 <Font cssVariable="--font-atkinson" preload />
 
 <!-- Canonical URL -->
