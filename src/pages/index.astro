@@ -142,20 +142,6 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         transform: scale(1.05);
       }
 
-      .spider-cta {
-        background: #fef2f2;
-        border-left: 4px solid #ef4444;
-        padding: 1.2rem;
-        border-radius: 6px;
-        margin-bottom: 2rem;
-      }
-      .spider-cta p {
-        margin: 0;
-        font-size: 0.95rem;
-        color: #991b1b;
-        line-height: 1.6;
-      }
-
       .card-actions {
         display: flex;
         justify-content: space-between;
@@ -167,8 +153,8 @@ import imgPerfil from "../assets/foto_perfil.jpg";
 
       .project-date {
         font-size: 0.8rem;
-        color: #64748b; /* Un gris sutil para no robar atención */
-        margin-top: -0.3rem; /* Lo acerca un poquito al título */
+        color: #64748b;
+        margin-top: -0.3rem;
         margin-bottom: 0.8rem;
         font-weight: 500;
         display: flex;
@@ -190,23 +176,6 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         color: #000;
       }
 
-      /* .btn-study {
-        background: #2563eb;
-        color: #ffffff !important;
-        padding: 0.5rem 1rem;
-        border-radius: 6px;
-        font-size: 0.85rem;
-        font-weight: 600;
-        text-decoration: none;
-        transition:
-          background-color 0.2s ease,
-          transform 0.2s ease;
-      }
-      .btn-study:hover {
-        background: #1d4ed8;
-        transform: translateY(-2px);
-      } */
-
       @media (max-width: 768px) {
         .profile-container {
           flex-direction: column-reverse;
@@ -223,27 +192,15 @@ import imgPerfil from "../assets/foto_perfil.jpg";
   <body>
     <Header />
     <main>
+      <!-- PERFIL HERO -->
       <div class="profile-container">
         <div class="profile-text">
-          <h1 id="inicio">Hola, soy Erick Bustamante</h1>
-          <p>
-            <strong>Ingeniero de Software Full Stack & Frontend</strong>.
-            Actualmente curso la <strong
-              >Maestría en Informática (PPGI) en la Universidade de Brasília
-              (UnB)</strong
-            >, investigando en el Grupo de Procesamiento de Señales (GPDS). Me
-            apasiona construir aplicaciones de alto rendimiento utilizando
-            tecnologías modernas e integrar modelos complejos en soluciones
-            reales.
+          <h1 id="inicio" data-i18n="hero.title">Hi, I'm Erick Bustamante</h1>
+          <p data-i18n-html="hero.p1">
+            <strong>Full Stack & Frontend Software Engineer</strong>. Currently pursuing a <strong>Master’s Degree in Informatics (PPGI) at Universidade de Brasília (UnB)</strong>, researching in the Signal Processing Group (GPDS). Passionate about building high-performance applications with modern stacks and integrating complex models into real-world solutions.
           </p>
-          <p>
-            Me enfoco en escribir código limpio, optimizar el rendimiento y
-            aplicar Inteligencia Artificial (Visión Computacional y NLP) para
-            resolver problemas tangibles. Cuento con experiencia en el <strong
-              >sector salud (HealthTech)</strong
-            >, donde he desarrollado sistemas ERP e interfaces médicas a medida,
-            integrando comunicación con hardware, procesamiento multimedia y
-            análisis de datos en tiempo real.
+          <p data-i18n-html="hero.p2">
+            Focused on clean code, performance optimization, and applying Artificial Intelligence (Computer Vision and NLP) to solve tangible challenges. Proven track record in <strong>HealthTech</strong>, building custom ERPs and clinical interfaces with hardware connectivity, multimedia processing, and real-time data streaming.
           </p>
         </div>
         <div class="profile-image-wrapper">
@@ -251,94 +208,81 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         </div>
       </div>
 
-      <!-- <div class="spider-cta">
-        <p>
-          🕸️ <strong>¿Por qué estoy aquí?</strong> Gracias a un curso de React de
-          Midudev logré un puesto como Ingeniero de Software en ML Orange. Hoy quiero
-          aportar este stack y mi experiencia en el desarrollo de la landing de <strong
-            >Spider-Man: Brand New Day</strong
-          >
-        </p>
-      </div> -->
-
       <!-- SECCIÓN 1: EXPERIENCIA -->
-      <h2 id="experiencia">💼 Experiencia de Trabajo</h2>
+      <h2 id="experiencia" data-i18n="exp.section_title">💼 Work Experience</h2>
       <div class="project-grid">
         <!-- TARJETA 1: CAJA CUSCO -->
         <div class="project-card">
           <Image src={imgCajaCusco} alt="Caja Cusco App" width={600} />
-          <h4>Caja Municipal Cusco</h4>
-          <p class="project-date">🗓️ Nov 2024 - Feb 2026</p>
+          <h4 data-i18n="exp.cajacusco_title">Caja Municipal Cusco</h4>
+          <p class="project-date" data-i18n="exp.cajacusco_date">🗓️ Nov 2024 - Feb 2026</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Kotlin</span>
             <span class="tag">Spring Boot</span>
             <span class="tag">SQL Server</span>
           </div>
-          <p>
-            Desarrollo del aplicativo móvil Wayki App. Implementación de nuevas
-            funcionalidades y optimización de recursos en la banca digital.
+          <p data-i18n="exp.cajacusco_desc">
+            Development of the Wayki App mobile application. Implementation of new digital banking features and resource optimization.
           </p>
           <a
             href="https://play.google.com/store/apps/details?id=com.pe.cajacusco.movil&hl=es"
             target="_blank"
             class="card-link"
             style="font-size: 0.9rem; font-weight: bold; color: #2563eb;"
-            >Ver Aplicacion en Play Store &rarr;</a
+            data-i18n="exp.cajacusco_link"
+            >View App on Play Store &rarr;</a
           >
         </div>
 
         <!-- TARJETA 2: ML ORANGE -->
         <div class="project-card">
           <Image src={imgMlOrange} alt="ML Orange App" width={600} />
-          <h4>ML Orange (XMachina)</h4>
-          <p class="project-date">🗓️ Ago 2024 - Nov 2024</p>
+          <h4 data-i18n="exp.mlorange_title">ML Orange (XMachina)</h4>
+          <p class="project-date" data-i18n="exp.mlorange_date">🗓️ Aug 2024 - Nov 2024</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">React Native</span>
             <span class="tag">React</span>
             <span class="tag">Express</span>
           </div>
-          <p>
-            Desarrollo Full Stack de un aplicativo móvil para el análisis de
-            audios y prediccion de enfermedades en los trabajadores y soporte de
-            módulos en el aplicativo de escritorio para el control de
-            informaciòn (Electron).
+          <p data-i18n="exp.mlorange_desc">
+            Full Stack development of a mobile app for acoustic analysis and occupational health disease prediction, along with desktop modules in Electron for internal administration.
           </p>
           <a
             href="https://www.linkedin.com/company/ex-machina-si/posts/?feedView=all"
             target="_blank"
             class="card-link"
             style="font-size: 0.9rem; font-weight: bold; color: #2563eb;"
-            >Ver perfil en Linkedin &rarr;</a
+            data-i18n="exp.mlorange_link"
+            >View LinkedIn Profile &rarr;</a
           >
         </div>
 
         <!-- TARJETA 3: SMART CITIES -->
         <div class="project-card">
           <Image src={imgSmartCities} alt="Smart Cities" width={600} />
-          <h4>Smart Cities Perú</h4>
-          <p class="project-date">🗓️ Nov 2022 - Ago 2023</p>
+          <h4 data-i18n="exp.smartcities_title">Smart Cities Perú</h4>
+          <p class="project-date" data-i18n="exp.smartcities_date">🗓️ Nov 2022 - Aug 2023</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Angular</span>
             <span class="tag">JavaScript</span>
             <span class="tag">Figma</span>
           </div>
-          <p>
-            Refactorización completa de sistemas Extranet e Intranet de la
-            empresa Consettur. Desarrollo de interfaz gráfica para el ERP médico
-            de la Clínica Macsalud.
+          <p data-i18n="exp.smartcities_desc">
+            Complete refactoring of Extranet and Intranet portals for Consettur. Designed and engineered user interfaces for Macsalud Clinic’s medical ERP system.
           </p>
           <a
             href="https://www.linkedin.com/company/smart-cities-peru-sac/posts/?feedView=all"
             target="_blank"
             class="card-link"
             style="font-size: 0.9rem; font-weight: bold; color: #2563eb;"
-            >Ver perfil en Linkedin &rarr;</a
+            data-i18n="exp.smartcities_link"
+            >View LinkedIn Profile &rarr;</a
           >
         </div>
       </div>
 
       <!-- SECCIÓN 2: PROYECTOS INDEPENDIENTES Y ACADÉMICOS -->
-      <h2 id="proyectos">🛠️ Proyectos Independientes</h2>
+      <h2 id="proyectos" data-i18n="proj.section_title">🛠️ Independent Projects</h2>
       <div class="project-grid">
         <!-- WEB CLASIFICACIÓN MOSCAS-->
         <div class="project-card">
@@ -346,24 +290,24 @@ import imgPerfil from "../assets/foto_perfil.jpg";
             <Image src={imgMoscas} alt="Clasificador Moscas" width={600} />
           </a>
 
-          <h4>Web de Clasificación con IA</h4>
-          <p class="project-date">🗓️ 2024</p>
+          <h4 data-i18n="proj.moscas_title">AI-Powered Fruit Fly Classifier</h4>
+          <p class="project-date" data-i18n="proj.moscas_date">🗓️ 2024</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">React</span>
             <span class="tag">Flask</span>
-            <span class="tag">Computer Vision</span>
+            <span class="tag" data-i18n="dron.tag_vision">Computer Vision</span>
           </div>
-          <p>
-            Aplicación web Full Stack para cargar imágenes y clasificar especies
-            de mosca de la fruta. Prototipo de tesis propio.
+          <p data-i18n="proj.moscas_desc">
+            Full Stack web application for uploading imagery and classifying fruit fly agricultural pests. Research thesis prototype.
           </p>
 
           <div class="card-actions">
             <a
               href="/caso-moscas"
               style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
+              data-i18n="action.view_case_study"
             >
-              Ver caso de Estudio &rarr;
+              Read Case Study &rarr;
             </a>
             <a
               href="https://github.com/ErickAndrewBF/moscas-frontend.git"
@@ -389,30 +333,29 @@ import imgPerfil from "../assets/foto_perfil.jpg";
         <!-- APP DRON-->
         <div class="project-card">
           <Image src={imgDron} alt="App Dron Kotlin" width={600} />
-          <h4>Control de Dron Nativo</h4>
-          <p class="project-date">🗓️ 2025 - 2026</p>
+          <h4 data-i18n="proj.dron_title">Native Drone Control & Tracking</h4>
+          <p class="project-date" data-i18n="proj.dron_date">🗓️ 2025 - 2026</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Kotlin</span>
             <span class="tag">DJI SDK</span>
           </div>
-          <p>
-            App Android para control de drones y procesamiento de video en
-            tiempo real para detección de llamas y alpacas con Inteligencia
-            Artificial.
+          <p data-i18n="proj.dron_desc">
+            Android application for direct drone control and real-time video processing to detect and track livestock using Computer Vision.
           </p>
           <a
             href="/caso-dron"
             class="card-link"
             style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
-            >Ver Caso de Estudio &rarr;</a
+            data-i18n="action.view_case_study"
+            >Read Case Study &rarr;</a
           >
         </div>
 
         <!-- APP QUECHUA-->
         <div class="project-card">
           <Image src={imgQuechua} alt="App Quechua" width={600} />
-          <h4>Recolección de Audio en Quechua</h4>
-          <p class="project-date">🗓️ 2026</p>
+          <h4 data-i18n="proj.quechua_title">Quechua Medical Audio Platform</h4>
+          <p class="project-date" data-i18n="proj.quechua_date">🗓️ 2026</p>
           <div class="tag-container" style="margin-bottom: 0.5rem;">
             <span class="tag">Java</span>
             <span class="tag">Android</span>
@@ -420,16 +363,15 @@ import imgPerfil from "../assets/foto_perfil.jpg";
             <span class="tag">PostgreSQL</span>
             <span class="tag">MinIO (S3)</span>
           </div>
-          <p>
-            App móvil desarrollada para una tesis externa orientada a la
-            recolección y estructuración de datos de voz en lenguas indígenas
-            para la creaciòn de datasets para modelos predictivos.
+          <p data-i18n="proj.quechua_desc">
+            Mobile system developed for an external thesis collecting and validating voice recordings in indigenous languages to build machine learning datasets.
           </p>
           <a
             href="/caso-quechua"
             class="card-link"
             style="font-size: 0.9rem; font-weight: bold; color: #16a34a;"
-            >Ver Caso de Estudio &rarr;</a
+            data-i18n="action.view_case_study"
+            >Read Case Study &rarr;</a
           >
         </div>
       </div>

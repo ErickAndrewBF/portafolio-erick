@@ -6,11 +6,13 @@ import { SITE_TITLE } from "../consts";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <BaseHead
-      title={`Caso de Estudio: App Dron | ${SITE_TITLE}`}
-      description="Caso de estudio: Desarrollo nativo en Kotlin y Visión Computacional."
+      title={`Case Study: Drone App | ${SITE_TITLE}`}
+      description="Case study: Native Android development in Kotlin and Computer Vision with DJI SDK."
+      titleKey="dron.meta_title"
+      descriptionKey="dron.meta_desc"
     />
     <style>
       * {
@@ -130,104 +132,91 @@ import { SITE_TITLE } from "../consts";
   <body>
     <Header />
     <main class="case-container">
-      <a href="/" class="back-link">&larr; Volver al Portafolio</a>
+      <a href="/" class="back-link" data-i18n="action.back_portfolio">&larr; Back to Portfolio</a>
 
-      <h1>Control de Dron Nativo e IA en Tiempo Real</h1>
+      <h1 data-i18n="dron.title">Native Drone Control & Real-Time AI</h1>
 
       <div class="tag-container">
         <span class="tag">Kotlin</span>
-        <span class="tag">Android Nativo</span>
+        <span class="tag" data-i18n="dron.tag_native">Native Android</span>
         <span class="tag">DJI Mobile SDK</span>
-        <span class="tag">Visión Computacional</span>
+        <span class="tag" data-i18n="dron.tag_vision">Computer Vision</span>
       </div>
 
       <div class="info-box">
         <p>
-          <strong>Nota de Confidencialidad:</strong> Este sistema fue desarrollado
-          a medida para un proyecto de investigación. Por acuerdos de propiedad intelectual,
-          el código fuente y el algoritmo matemático de <em>tracking</em> se mantienen
-          privados. A continuación, detallo la arquitectura, la integración del hardware
-          y la interfaz de usuario.
+          <strong data-i18n="dron.notice_title">Confidentiality Notice:</strong>{" "}
+          <span data-i18n-html="dron.notice_body">
+            This system was custom built for a scientific research project. Due to intellectual property agreements, the source code and mathematical tracking algorithm remain confidential. Below, I outline the architecture, hardware integration, and user interface.
+          </span>
         </p>
       </div>
 
-      <h2>El Reto Técnico</h2>
-      <p>
-        El objetivo fue construir una aplicación móvil Android nativa capaz de
-        establecer comunicación directa con el hardware de un dron (utilizando
-        el DJI Mobile SDK) y procesar su flujo de video en tiempo real. La meta:
-        detectar y rastrear llamas y alpacas en el campo, permitiendo a los
-        investigadores generar reportes geolocalizados.
+      <h2 data-i18n="dron.challenge_title">The Technical Challenge</h2>
+      <p data-i18n="dron.challenge_body">
+        The goal was to build a native Android mobile application capable of communicating directly with drone hardware (using the DJI Mobile SDK) and processing its live video stream in real time. Objective: detect and track llamas and alpacas in agricultural fields, allowing researchers to generate geolocated reports.
       </p>
 
-      <h2>Demostración del Flujo de Trabajo</h2>
+      <h2 data-i18n="dron.demo_title">Workflow Demonstration</h2>
 
       <div class="video-wrapper">
         <video controls muted>
           <source src="/demo-dron.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
+          <span data-i18n="action.video_unsupported">Your browser does not support the video tag.</span>
         </video>
       </div>
 
-      <p>
-        En el video superior se demuestra la robustez del sistema operando en su
-        modo de carga local (procesando un video pregrabado para simular la
-        vista del dron):
+      <p data-i18n="dron.demo_intro">
+        The video above demonstrates the robustness of the system operating in local playback mode (processing pre-recorded flight video to simulate the drone camera feed):
       </p>
 
       <ol>
         <li>
-          <strong>Gestión de Rendimiento:</strong> Iniciamos en el panel de configuraciones
-          seleccionando el modelo de inferencia "Ligero". Esto permite priorizar los
-          FPS (Frames per Second) para mantener una interfaz fluida en dispositivos
-          móviles estándar.
+          <strong data-i18n="dron.step1_title">Performance Management:</strong>{" "}
+          <span data-i18n="dron.step1_body">
+            We start in the configuration dashboard selecting the "Lightweight" inference model to prioritize FPS and maintain a smooth UI on standard mobile devices.
+          </span>
         </li>
         <li>
-          <strong>Tracking Integrado:</strong> Al cargar el video, se observa el procesamiento
-          en tiempo real. Se integró exitosamente el algoritmo de tracking del cliente
-          dentro del ciclo de vida de la app, manteniendo el seguimiento de los objetivos
-          sin congelar el hilo principal (Main Thread).
+          <strong data-i18n="dron.step2_title">Integrated Tracking:</strong>{" "}
+          <span data-i18n="dron.step2_body">
+            Upon loading the video, real-time tracking is executed. The proprietary tracking algorithm was successfully embedded into the Android lifecycle without freezing the Main Thread.
+          </span>
         </li>
         <li>
-          <strong>Persistencia de Datos:</strong> Generación y guardado de reportes
-          de detección en tiempo real.
+          <strong data-i18n="dron.step3_title">Data Persistence:</strong>{" "}
+          <span data-i18n="dron.step3_body">Instant generation and saving of target detection logs in real time.</span>
         </li>
         <li>
-          <strong>Trade-off de IA:</strong> Se demuestra el cambio en caliente al
-          modelo "Pesado". Aunque los FPS disminuyen por la carga computacional, la
-          aplicación sigue siendo estable, permitiendo al usuario decidir qué factor
-          priorizar.
+          <strong data-i18n="dron.step4_title">AI Trade-off:</strong>{" "}
+          <span data-i18n="dron.step4_body">
+            Hot-swapping to the "Heavy" model is demonstrated. While frame rate adapts to computational load, the app remains fully responsive, giving users full control.
+          </span>
         </li>
         <li>
-          <strong>Historial:</strong> Todos los reportes generados se persisten correctamente
-          en la base de datos local del dispositivo.
+          <strong data-i18n="dron.step5_title">Inspection History:</strong>{" "}
+          <span data-i18n="dron.step5_body">
+            All generated detection events persist accurately in the local device database.
+          </span>
         </li>
         <li>
-          <strong>Hardware-Ready:</strong> Finalmente, se expone la interfaz principal
-          a la espera de la conexión del hardware físico a través del SDK de DJI.
+          <strong data-i18n="dron.step6_title">Hardware-Ready:</strong>{" "}
+          <span data-i18n="dron.step6_body">
+            Finally, the primary flight dashboard is displayed awaiting physical hardware telemetry via DJI Mobile SDK.
+          </span>
         </li>
       </ol>
 
-      <h2>Desafíos Resueltos</h2>
+      <h2 data-i18n="dron.challenges_title">Resolved Challenges</h2>
 
-      <h3>1. Integración del DJI Mobile SDK</h3>
-      <p>
-        Conectar hardware externo a un dispositivo móvil requiere un manejo
-        estricto de hilos (Threads). El principal desafío fue interceptar el
-        flujo de video en bruto que envía el dron y convertirlo a un formato que
-        el modelo de Inteligencia Artificial pudiera consumir, todo esto sin
-        generar bloqueos en la interfaz de usuario ni pérdidas de memoria
-        (Memory Leaks).
+      <h3 data-i18n="dron.chal1_title">1. DJI Mobile SDK Integration</h3>
+      <p data-i18n="dron.chal1_body">
+        Connecting external drone hardware to a mobile operating system demands strict multithreading. The key challenge was intercepting raw video frames from the drone and converting them efficiently for AI ingestion without causing UI stuttering or memory leaks.
       </p>
 
-      <h3>2. Arquitectura del Algoritmo de Tracking</h3>
-      <p>
-        Si bien el modelo de inferencia (los pesos de la IA) fue provisto por el
-        investigador, mi responsabilidad fue orquestar su ejecución. Implementé
-        una arquitectura modular que separa la capa de renderizado de UI de la
-        capa de procesamiento matemático. Esto asegura que la aplicación pueda
-        escalar si en el futuro el cliente decide inyectar modelos más
-        complejos.
+      <h3 data-i18n="dron.chal2_title">2. Tracking Algorithm Architecture</h3>
+      <p data-i18n="dron.chal2_body">
+        While model weights were provided by the scientific team, my responsibility was orchestrating execution. I designed a modular decoupled architecture separating UI rendering from mathematical processing, ensuring long-term scalability.
       </p>
     </main>
     <Footer />

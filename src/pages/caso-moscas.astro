@@ -3,17 +3,16 @@ import BaseHead from "../components/BaseHead.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE } from "../consts";
-import { Image } from "astro:assets";
-// Si tienes una imagen destacada para el caso de estudio, la importas aquí:
-// import imgMoscas from "../assets/tus-moscas.png";
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <BaseHead
-      title={`Caso de Estudio: Clasificación de Moscas | ${SITE_TITLE}`}
-      description="Caso de estudio: Clasificación de especies de mosca de la fruta utilizando visión computacional e IA."
+      title={`Case Study: Fruit Fly Classifier | ${SITE_TITLE}`}
+      description="Case study: Fruit fly species classification using Computer Vision and Deep Learning."
+      titleKey="moscas.meta_title"
+      descriptionKey="moscas.meta_desc"
     />
     <style>
       * {
@@ -158,19 +157,19 @@ import { Image } from "astro:assets";
     <Header />
     <main class="case-container">
       <div class="navigation-header">
-        <a href="/" class="back-link">&larr; Volver al Portafolio</a>
+        <a href="/" class="back-link" data-i18n="action.back_portfolio">&larr; Back to Portfolio</a>
         <a
           href="https://github.com/ErickAndrewBF/moscas-frontend.git"
           target="_blank"
           class="github-btn"
+          data-i18n="action.view_github"
         >
-          Ver en GitHub
+          View on GitHub
         </a>
       </div>
 
-      <h1>
-        Clasificador de Especies de Mosca de la Fruta con Inteligencia
-        Artificial
+      <h1 data-i18n="moscas.title">
+        Fruit Fly Species Classifier with Artificial Intelligence
       </h1>
 
       <div class="tag-container">
@@ -178,106 +177,85 @@ import { Image } from "astro:assets";
         <span class="tag">Flask</span>
         <span class="tag">Python</span>
         <span class="tag">PyTorch</span>
-        <span class="tag">Computer Vision</span>
+        <span class="tag" data-i18n="dron.tag_vision">Computer Vision</span>
       </div>
 
       <div class="info-box">
         <p>
-          <strong>Proyecto de Tesis / Investigación:</strong> Este prototipo fue desarrollado
-          para automatizar la identificación de plagas agrícolas en el sector frutícola.
-          Utiliza redes neuronales convolucionales para agilizar el diagnóstico en
-          campo.
+          <strong data-i18n="moscas.notice_title">Thesis / Research Project:</strong>{" "}
+          <span data-i18n="moscas.notice_body">
+            This prototype was built to automate agricultural pest detection in the fruit industry. It leverages convolutional neural networks to accelerate in-field entomological diagnostics.
+          </span>
         </p>
       </div>
 
-      <h2>El Reto Técnico</h2>
-      <p>
-        La identificación manual de la mosca de la fruta (especialmente del
-        género <em>Anastrepha</em> o <em>Ceratitis capitata</em>) requiere
-        expertos entomólogos y microscopios de alta resolución. El desafío
-        consistió en entrenar un modelo de Deep Learning ligero que clasifique
-        estas especies mediante fotografías capturadas con smartphones
-        convencionales y servirlo a través de una aplicación Web Full Stack ágil
-        y amigable.
+      <h2 data-i18n="moscas.challenge_title">The Technical Challenge</h2>
+      <p data-i18n-html="moscas.challenge_body">
+        Manual identification of fruit flies (notably <em>Anastrepha</em> species and <em>Ceratitis capitata</em>) requires specialized entomologists and high-power microscopes. The challenge consisted in training a lightweight Deep Learning model to classify specimens from standard smartphone photos and serving it through an intuitive Full Stack web application.
       </p>
 
-      <h2>Demostración del Funcionamiento (Video)</h2>
+      <h2 data-i18n="moscas.demo_title">Live Demonstration (Video)</h2>
 
       <div class="video-wrapper">
         <video controls muted>
           <source src="/demo-moscas.mp4" type="video/mp4" />
-          Tu navegador no soporta la reproducción de video.
+          <span data-i18n="action.video_unsupported">Your browser does not support the video tag.</span>
         </video>
       </div>
 
-      <p>
-        En la demostración técnica del video se detalla el flujo de trabajo
-        completo de la plataforma, desde la selección de los datos hasta la
-        explicabilidad visual del modelo:
+      <p data-i18n="moscas.demo_intro">
+        The technical walkthrough demonstrates the end-to-end platform workflow, from sample selection to model explainability:
       </p>
 
       <ol>
         <li>
-          <strong>Navegación y Contexto (Landing Page):</strong> Recorrido por la
-          interfaz mediante pestañas (tabs) que detallan el propósito de la herramienta,
-          las métricas de evaluación empleadas y las arquitecturas de los modelos
-          implementados.
+          <strong data-i18n="moscas.step1_title">Navigation & Context:</strong>{" "}
+          <span data-i18n="moscas.step1_body">
+            Structured tab navigation detailing project motivation, evaluation metrics, and neural network architectures.
+          </span>
         </li>
         <li>
-          <strong>Selección de Muestras y Modelos:</strong> El entorno de pruebas
-          permite utilizar imágenes precargadas en el servidor. El usuario puede seleccionar
-          dinámicamente entre 1 y 5 muestras provenientes de 3
-          <em>datasets</em> distintos y elegir los modelos de IA que participarán
-          en la predicción.
+          <strong data-i18n="moscas.step2_title">Sample & Model Selection:</strong>{" "}
+          <span data-i18n="moscas.step2_body">
+            The testing sandbox allows selecting between 1 and 5 sample images across 3 benchmark datasets and choosing which models participate in inference.
+          </span>
         </li>
         <li>
-          <strong>Pipeline de Preprocesamiento Visual:</strong> El sistema expone
-          el paso a paso de las transformaciones aplicadas a cada imagen hasta lograr
-          la segmentación exacta de la mosca. Incluye una galería interactiva con
-          controles de navegación (adelante/atrás) para inspeccionar el proceso en
-          detalle.
+          <strong data-i18n="moscas.step3_title">Visual Preprocessing Pipeline:</strong>{" "}
+          <span data-i18n="moscas.step3_body">
+            Step-by-step display of morphological transformations up to precise pest segmentation, featuring an interactive slider gallery.
+          </span>
         </li>
         <li>
-          <strong>Clasificación Multimodelo:</strong> Despliegue de los resultados
-          donde se compara la predicción de los modelos seleccionados para cada imagen
-          procesada.
+          <strong data-i18n="moscas.step4_title">Multi-Model Inference:</strong>{" "}
+          <span data-i18n="moscas.step4_body">
+            Side-by-side performance comparison of model predictions for each processed specimen.
+          </span>
         </li>
         <li>
-          <strong>Explicabilidad con Grad-CAM:</strong> Fase crítica para la validación
-          científica. El usuario selecciona imágenes específicas para generar mapas
-          de calor (Grad-CAM), visualizando el área original, el mapa de activación
-          y la superposición de ambos. Esto permite entender exactamente <em
-            >qué partes del insecto</em
-          > está mirando la red neuronal para tomar su decisión.
+          <strong data-i18n="moscas.step5_title">Grad-CAM Explainability:</strong>{" "}
+          <span data-i18n-html="moscas.step5_body">
+            A vital phase for scientific validation: users generate activation heatmaps to inspect exactly which morphological features the network relied on.
+          </span>
         </li>
         <li>
-          <strong>Flujo Iterativo:</strong> Retorno fluido a la pantalla de selección
-          para evaluar nuevos lotes de imágenes sin recargar el aplicativo.
+          <strong data-i18n="moscas.step6_title">Iterative Workflow:</strong>{" "}
+          <span data-i18n="moscas.step6_body">
+            Seamless return to the selection sandbox to evaluate new batches without reloading the single-page application.
+          </span>
         </li>
       </ol>
 
-      <h2>Solución Arquitectónica</h2>
+      <h2 data-i18n="moscas.solution_title">Architectural Solution</h2>
 
-      <h3>1. API Backend Analítico (Flask + PyTorch)</h3>
-      <p>
-        Lejos de ser un simple <em>endpoint</em> de clasificación, el servidor orquesta
-        un pipeline completo de Visión Computacional. Flask gestiona la carga de múltiples
-        modelos en memoria y los diferentes <em>datasets</em> de evaluación. La API
-        expone rutas que no solo devuelven predicciones, sino que procesan y envían
-        al cliente las etapas intermedias de segmentación y calculan dinámicamente
-        los mapas de activación (Grad-CAM) utilizando PyTorch.
+      <h3 data-i18n="moscas.sol1_title">1. Analytical Backend API (Flask + PyTorch)</h3>
+      <p data-i18n-html="moscas.sol1_body">
+        Far from a simple prediction endpoint, the backend manages image preprocessing, multi-model memory allocation, intermediate segmentation outputs, and dynamic Grad-CAM computation.
       </p>
 
-      <h3>2. Panel Científico en el Frontend (React)</h3>
-      <p>
-        Construí una interfaz (SPA) orientada a la auditoría de modelos,
-        abandonando el enfoque de una simple "app de cámara". El mayor reto
-        arquitectónico fue la gestión del estado global para coordinar la
-        selección cruzada de muestras y modelos. Desarrollé componentes a
-        medida, como el visor interactivo (slider) para inspeccionar el
-        preprocesamiento paso a paso, optimizando el DOM para renderizar
-        múltiples mapas de calor simultáneamente sin degradar el rendimiento
-        visual.
+      <h3 data-i18n="moscas.sol2_title">2. Scientific Dashboard Frontend (React)</h3>
+      <p data-i18n="moscas.sol2_body">
+        Designed as an interactive model auditing studio. Handled complex global state coordination, custom step-by-step sliders, and optimized DOM rendering for concurrent heatmaps.
       </p>
     </main>
     <Footer />

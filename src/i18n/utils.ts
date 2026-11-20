@@ -71,8 +71,10 @@ export function useTranslations(lang: Lang = defaultLang) {
 /**
  * Applies language to the document and updates all i18n DOM bindings:
  * - Updates <html lang="...">
- * - Updates text of elements with [data-i18n]
- * - Updates aria-label of elements with [data-i18n-aria-label]
+ * - Updates document.title and meta description if marked with data-i18n
+ * - Updates elements with [data-i18n] (safe innerHTML when tags detected, textContent otherwise)
+ * - Updates elements with [data-i18n-html]
+ * - Updates elements with [data-i18n-aria-label]
  * - Updates active states of buttons with [data-lang]
  * - Emits 'languagechange' CustomEvent for components to react
  */
@@ -82,33 +84,81 @@ export function applyLanguage(lang: Lang): void {
   // 1. Update <html lang>
   document.documentElement.lang = lang;
 
-  // 2. Update text content
+  const currentDict = translations[lang] || translations[defaultLang];
+  const fallbackDict = translations[defaultLang];
+
+  const getTranslation = (key: TranslationKey): string | undefined => {
+    return (currentDict as Record<string, string>)[key] ?? (fallbackDict as Record<string, string>)[key];
+  };
+
+  // 2. Update page title if marked with data-i18n
+  const titleEl = document.querySelector('title[data-i18n]');
+  if (titleEl) {
+    const key = titleEl.getAttribute('data-i18n') as TranslationKey | null;
+    if (key) {
+      const translated = getTranslation(key);
+      if (translated) {
+        document.title = translated;
+      }
+    }
+  }
+
+  // 3. Update meta description if marked with data-i18n
+  const metaDesc = document.querySelector('meta[name="description"][data-i18n]');
+  if (metaDesc) {
+    const key = metaDesc.getAttribute('data-i18n') as TranslationKey | null;
+    if (key) {
+      const translated = getTranslation(key);
+      if (translated) {
+        metaDesc.setAttribute('content', translated);
+      }
+    }
+  }
+
+  // 4. Update text / html content on [data-i18n]
   const textElements = document.querySelectorAll<HTMLElement>('[data-i18n]');
   textElements.forEach((el) => {
+    // Avoid re-processing title/meta handled above
+    if (el.tagName === 'TITLE') return;
+
     const key = el.getAttribute('data-i18n') as TranslationKey | null;
     if (key) {
-      const translated = (translations[lang] as Record<string, string>)[key] ??
-        (translations[defaultLang] as Record<string, string>)[key];
-      if (translated) {
-        el.textContent = translated;
+      const translated = getTranslation(key);
+      if (translated !== undefined) {
+        if (/<[a-z][\s\S]*>/i.test(translated)) {
+          el.innerHTML = translated;
+        } else {
+          el.textContent = translated;
+        }
       }
     }
   });
 
-  // 3. Update aria-labels
+  // 5. Update explicit [data-i18n-html] elements
+  const htmlElements = document.querySelectorAll<HTMLElement>('[data-i18n-html]');
+  htmlElements.forEach((el) => {
+    const key = el.getAttribute('data-i18n-html') as TranslationKey | null;
+    if (key) {
+      const translated = getTranslation(key);
+      if (translated !== undefined) {
+        el.innerHTML = translated;
+      }
+    }
+  });
+
+  // 6. Update aria-labels
   const ariaElements = document.querySelectorAll<HTMLElement>('[data-i18n-aria-label]');
   ariaElements.forEach((el) => {
     const key = el.getAttribute('data-i18n-aria-label') as TranslationKey | null;
     if (key) {
-      const translated = (translations[lang] as Record<string, string>)[key] ??
-        (translations[defaultLang] as Record<string, string>)[key];
+      const translated = getTranslation(key);
       if (translated) {
         el.setAttribute('aria-label', translated);
       }
     }
   });
 
-  // 4. Update language selector buttons state
+  // 7. Update language selector buttons state
   const langButtons = document.querySelectorAll<HTMLButtonElement>('button[data-lang]');
   langButtons.forEach((btn) => {
     const btnLang = btn.getAttribute('data-lang');
@@ -117,7 +167,7 @@ export function applyLanguage(lang: Lang): void {
     btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   });
 
-  // 5. Dispatch global event for other components (e.g. CV download button)
+  // 8. Dispatch global event for other components (e.g. CV download button)
   window.dispatchEvent(
     new CustomEvent<{ lang: Lang }>('languagechange', {
       detail: { lang },
@@ -140,7 +190,12 @@ export function initI18n(): Lang {
   // Bind click handlers to buttons with [data-lang]
   const selectorButtons = document.querySelectorAll<HTMLButtonElement>('button[data-lang]');
   selectorButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
+    // Avoid double attaching if already initialized
+    if (btn.dataset.i18nBound === 'true') return;
+    btn.dataset.i18nBound = 'true';
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
       const targetLang = btn.getAttribute('data-lang');
       if (isValidLang(targetLang)) {
         setStoredLanguage(targetLang);

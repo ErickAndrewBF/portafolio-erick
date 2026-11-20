@@ -7,15 +7,25 @@ import FallbackImage from "../assets/moscas-app.jpg";
 import { SITE_TITLE } from "../consts";
 import { Font } from "astro:assets";
 
+import type { TranslationKey } from "../i18n/ui";
+
 interface Props {
   title: string;
   description: string;
   image?: ImageMetadata;
+  titleKey?: TranslationKey;
+  descriptionKey?: TranslationKey;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const { title, description, image = FallbackImage } = Astro.props;
+const {
+  title,
+  description,
+  image = FallbackImage,
+  titleKey,
+  descriptionKey,
+} = Astro.props;
 ---
 
 <!-- Global Metadata -->
@@ -57,8 +67,8 @@ const { title, description, image = FallbackImage } = Astro.props;
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="description" content={description} />
+<title data-i18n={titleKey}>{title}</title>
+<meta name="description" content={description} data-i18n={descriptionKey} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
