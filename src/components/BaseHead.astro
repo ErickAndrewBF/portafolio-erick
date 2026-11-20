@@ -47,24 +47,24 @@ const {
   (() => {
     try {
       // 1. Language sync
-      const savedLang = localStorage.getItem('preferred_lang');
-      const nav = (navigator.language || '').toLowerCase();
-      let lang = 'en';
-      if (savedLang === 'en' || savedLang === 'pt' || savedLang === 'es') {
+      const savedLang = localStorage.getItem("preferred_lang");
+      const nav = (navigator.language || "").toLowerCase();
+      let lang = "en";
+      if (savedLang === "en" || savedLang === "pt" || savedLang === "es") {
         lang = savedLang;
-      } else if (nav.startsWith('pt')) {
-        lang = 'pt';
-      } else if (nav.startsWith('es')) {
-        lang = 'es';
+      } else if (nav.startsWith("pt")) {
+        lang = "pt";
+      } else if (nav.startsWith("es")) {
+        lang = "es";
       }
       document.documentElement.lang = lang;
 
-      // 2. Theme sync (anti-FOUC)
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light' || (!savedTheme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
-        document.documentElement.setAttribute('data-theme', 'light');
+      // 2. Theme sync (anti-FOUC) - Always default to dark
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "light") {
+        document.documentElement.setAttribute("data-theme", "light");
       } else {
-        document.documentElement.removeAttribute('data-theme');
+        document.documentElement.removeAttribute("data-theme");
       }
     } catch (e) {}
   })();
